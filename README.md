@@ -1,7 +1,3 @@
-<div align="center">
-    <img src="App/Assets/Images/TOM-Legend.png" alt="Logo" width="100%">
-</div>
-
 ## Content
 
 The boilerplate contains:
