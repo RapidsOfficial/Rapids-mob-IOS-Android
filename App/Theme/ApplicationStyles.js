@@ -1,3 +1,5 @@
+import Colors from "./Colors";
+
 /**
  * This file defines the base application styles.
  *
@@ -5,9 +7,10 @@
  */
 
 export default {
-  screen: {
-    container: {
-      flex: 1,
-    },
-  },
-}
+	screen: {
+		container: {
+			flex: 1,
+			backgroundColor: Colors.background,
+		},
+	},
+};
