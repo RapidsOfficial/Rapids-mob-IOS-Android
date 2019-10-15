@@ -4,6 +4,8 @@ import { createStackNavigator } from "react-navigation-stack";
 import ExampleScreen from "App/Containers/Example/ExampleScreen";
 import SplashScreen from "App/Containers/SplashScreen/SplashScreen";
 import LoadingScreen from "App/Containers/LoadingScreen/LoadingScreen";
+import WalletHome from "App/Containers/WalletHome/WalletHome";
+import Wallet from "App/Containers/Wallet/Wallet";
 
 /**
  * The root screen contains the application's navigation.
@@ -17,14 +19,16 @@ const StackNavigator = createStackNavigator(
 		SplashScreen: SplashScreen,
 		// The main application screen is our "ExampleScreen". Feel free to replace it with your
 		// own screen and remove the example.
-		MainScreen: ExampleScreen,
+		MainScreen: WalletHome,
+
+		WalletHome: { screen: WalletHome },
+		Wallet: { screen: Wallet },
+		Example: { screen: ExampleScreen },
 		LoadingScreen: LoadingScreen,
 	},
 	{
 		// By default the application will show the splash screen
-		// initialRouteName: "SplashScreen",
 		initialRouteName: "SplashScreen",
-
 		// See https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig
 		headerMode: "none",
 	}
