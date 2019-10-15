@@ -10,9 +10,10 @@ export default {
 	background: "#1C1F26",
 	loadingBar: "#009D55",
 	offWhite: "#FBFAFF",
+	lightGrey: "#909090",
 	// Example colors:
 	text: "#A9A5A5",
-	primary: "#007bff",
+	primary: "#009D55",
 	success: "#28a745",
 	error: "#dc3545",
 };
