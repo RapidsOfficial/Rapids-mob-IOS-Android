@@ -24,11 +24,15 @@
   ],
   "settings": {
     "react": {
-      "version": "detect",
-    },
+      "version": "detect"
+    }
   },
   "rules": {
     "react-native/no-raw-text": 0, // Avoid false positive, wait for fix
-    "semi": [2, "always"]
+    "semi": [2, "always"],
+    "react/prop-types": [1, {
+      "ignore": ['navigation'],
+      "skipUndeclared": true
+    }]
   }
 }
