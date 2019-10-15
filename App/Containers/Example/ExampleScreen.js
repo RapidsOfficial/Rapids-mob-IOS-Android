@@ -6,6 +6,7 @@ import ExampleActions from 'App/Stores/Example/Actions'
 import { liveInEurope } from 'App/Stores/Example/Selectors'
 import Style from './ExampleScreenStyle'
 import { Images } from 'App/Theme'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
  * This is an example of a container component.
@@ -32,7 +33,8 @@ class ExampleScreen extends React.Component {
         ) : (
           <View>
             <View style={Style.logoContainer}>
-              <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
+              <Icon name="rocket" size={30} color="#900" />
+              {/* <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} /> */}
             </View>
             <Text style={Style.text}>To get started, edit App.js</Text>
             <Text style={Style.instructions}>{instructions}</Text>

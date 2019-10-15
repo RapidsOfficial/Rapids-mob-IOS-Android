@@ -23,16 +23,11 @@ target 'wallet' do
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'walletTests' do
     inherit! :search_paths
     # Pods for testing
   end
   use_native_modules!
-end
-target 'wallet-tvOS' do
-  # Pods for wallet-tvOS
-  target 'wallet-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 end
