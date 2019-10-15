@@ -207,5 +207,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
-implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
-implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+// React navigation stuff
+// https://reactnavigation.org/docs/en/getting-started.html
+// implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+// implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
