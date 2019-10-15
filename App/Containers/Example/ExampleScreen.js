@@ -5,7 +5,9 @@ import { PropTypes } from 'prop-types'
 import ExampleActions from 'App/Stores/Example/Actions'
 import { liveInEurope } from 'App/Stores/Example/Selectors'
 import Style from './ExampleScreenStyle'
+import { Buttons, Input } from 'App/Theme'
 import { Images } from 'App/Theme'
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 /**
@@ -33,8 +35,7 @@ class ExampleScreen extends React.Component {
         ) : (
           <View>
             <View style={Style.logoContainer}>
-              <Icon name="rocket" size={30} color="#900" />
-              {/* <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} /> */}
+              <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
             </View>
             <Text style={Style.text}>To get started, edit App.js</Text>
             <Text style={Style.instructions}>{instructions}</Text>

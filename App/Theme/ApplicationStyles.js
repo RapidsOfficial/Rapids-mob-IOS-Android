@@ -8,6 +8,7 @@ export default {
   screen: {
     container: {
       flex: 1,
+      backgroundColor: '#1B1E26'
     },
   },
 }

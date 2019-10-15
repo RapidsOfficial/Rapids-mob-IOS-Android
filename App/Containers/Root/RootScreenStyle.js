@@ -3,6 +3,7 @@ import ApplicationStyles from 'App/Theme/ApplicationStyles'
 
 export default StyleSheet.create({
   container: {
-    ...ApplicationStyles.screen.container,
+    flex:1,
+    backgroundColor: '#1B1E26'
   },
 })
