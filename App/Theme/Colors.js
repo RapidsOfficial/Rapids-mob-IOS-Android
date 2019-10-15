@@ -8,6 +8,8 @@
 export default {
 	transparent: "rgba(0,0,0,0)",
 	background: "#1C1F26",
+	loadingBar: "#009D55",
+	offWhite: "#FBFAFF",
 	// Example colors:
 	text: "#A9A5A5",
 	primary: "#007bff",

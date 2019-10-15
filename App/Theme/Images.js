@@ -4,4 +4,5 @@
 
 export default {
 	logo: require("App/Assets/Images/wallet-logo.png"),
+	cycle: require("App/Assets/Images/cycle.png"),
 };

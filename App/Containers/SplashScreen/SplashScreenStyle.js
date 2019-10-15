@@ -14,8 +14,8 @@ export default StyleSheet.create({
 	logo: {
 		alignItems: "center",
 		display: "flex",
-		height: 70,
+		height: 200,
 		justifyContent: "center",
-		width: 70,
+		width: 200,
 	},
 });

@@ -1,12 +1,11 @@
 import React from "react";
-import { Platform, View, Button, ActivityIndicator, Image } from "react-native";
+import { Platform, View, Button, ActivityIndicator, Image, Text } from "react-native";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import ExampleActions from "App/Stores/Example/Actions";
 import { liveInEurope } from "App/Stores/Example/Selectors";
 import Style from "./ExampleScreenStyle";
 import { Images } from "App/Theme";
-import { LightText } from "../../Theme";
 
 /**
  * This is an example of a container component.
@@ -35,22 +34,33 @@ class ExampleScreen extends React.Component {
 						<View style={Style.logoContainer}>
 							<Image style={Style.logo} source={Images.logo} resizeMode={"contain"} />
 						</View>
-						<LightText style={Style.text}>To get started, edit App.js</LightText>
-						<LightText style={Style.instructions}>{instructions}</LightText>
+						<Text style={Style.text}>To get started, edit App.js</Text>
+						<Text style={Style.instructions}>{instructions}</Text>
 						{this.props.userErrorMessage ? (
-							<LightText style={Style.error}>{this.props.userErrorMessage}</LightText>
+							<Text style={Style.error}>{this.props.userErrorMessage}</Text>
 						) : (
 							<View>
-								<LightText style={Style.result}>
+								<Text style={Style.result}>
 									{"I'm a fake user, my name is "}
 									{this.props.user.name}
-								</LightText>
-								<LightText style={Style.result}>
+								</Text>
+								<Text style={Style.result}>
 									{this.props.liveInEurope ? "I live in Europe !" : "I don't live in Europe."}
-								</LightText>
+								</Text>
 							</View>
 						)}
-						<Button onPress={() => this._fetchUser()} title="Refresh" />
+						<Button
+							// eslint-disable-next-line
+							style={{
+								marginBottom: 10,
+							}}
+							onPress={() => this._fetchUser()}
+							title="Refresh"
+						/>
+						<Button
+							onPress={() => this.props.navigation.navigate("LoadingScreen")}
+							title="Get Started"
+						/>
 					</View>
 				)}
 			</View>
