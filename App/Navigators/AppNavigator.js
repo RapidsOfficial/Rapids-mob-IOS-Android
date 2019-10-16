@@ -1,7 +1,7 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation'
 
 import WalletHome from 'App/Containers/WalletHome/WalletHome';
-import Wallet from 'App/Containers/Wallet/Wallet';
+import CreateWallet from 'App/Containers/CreateWallet/CreateWallet';
 import ExampleScreen from 'App/Containers/Example/ExampleScreen';
 import SplashScreen from 'App/Containers/SplashScreen/SplashScreen';
 
@@ -20,8 +20,8 @@ const StackNavigator = createStackNavigator(
     MainScreen: WalletHome,
 
     WalletHome: { screen: WalletHome },
-    Wallet: { screen: Wallet },
-    Example: { screen: ExampleScreen },
+    CreateWallet: { screen: CreateWallet },
+    Example: { screen: ExampleScreen }
   },
   {
     // By default the application will show the splash screen
