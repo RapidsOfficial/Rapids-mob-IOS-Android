@@ -28,7 +28,7 @@ function WalletHome(props) {
 							})
 						}
 					/>
-					<Buttons text="Restore a Wallet" />
+					<Buttons text="Restore a Wallet" onPress={() => navigation.navigate("RestoreWallet")} />
 					<View style={Style.moreInfoContainer}>
 						<TouchableWithoutFeedback
 							onPress={() => toggleTooltip(!showTooltip)}
