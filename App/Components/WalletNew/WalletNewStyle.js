@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { ApplicationStyles } from "App/Theme/";
+import { Colors } from "../../Theme";
 
 export default StyleSheet.create({
 	buttonContainer: {
@@ -21,5 +22,9 @@ export default StyleSheet.create({
 		height: 300,
 		marginBottom: 25,
 		width: "100%",
+	},
+	moreInfoText: {
+		color: Colors.lightGrey,
+		textTransform: "uppercase",
 	},
 });

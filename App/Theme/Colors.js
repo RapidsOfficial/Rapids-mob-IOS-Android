@@ -12,6 +12,7 @@ export default {
 	offWhite: "#FBFAFF",
 	lightGrey: "#909090",
 	// Example colors:
+	info: "#24C299",
 	text: "#A9A5A5",
 	primary: "#009D55",
 	success: "#28a745",

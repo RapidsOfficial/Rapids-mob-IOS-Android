@@ -1,18 +1,16 @@
 import React, { useRef, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import Wizard from "react-native-wizard";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 import ChooseMnemonics from "../../Components/ChooseMnemonics";
 import { ApplicationStyles, Colors, Fonts } from "../../Theme";
+import TextWithInfo from "App/Components/TextWithInfo";
 
 function GenericComponent(props) {
-	console.log(props);
 	const { index } = props;
 	return <Text>Awesome stuff {index}</Text>;
 }
-
-const Styles = StyleSheet.create({});
 
 const steps = [
 	{
@@ -44,10 +42,10 @@ const steps = [
 
 const HeaderStyles = StyleSheet.create({
 	header: {
-		...ApplicationStyles.screen.container,
 		flex: 0,
 		paddingHorizontal: 20,
 		paddingVertical: 10,
+		zIndex: 1000,
 	},
 	navigation: {
 		flexDirection: "row",
@@ -57,30 +55,22 @@ const HeaderStyles = StyleSheet.create({
 		color: Colors.primary,
 		marginTop: 10,
 	},
-	stepInfo: {
-		backgroundColor: Colors.offWhite,
-		borderRadius: 10,
-		height: "auto",
-		left: 0,
-		padding: 20,
-		position: "absolute",
-		right: 0,
-		top: 0,
-	},
-	stepText: {
+	stepInfoInfo: {
 		color: Colors.offWhite,
-		fontSize: Fonts.size.input,
+	},
+	stepInfoRoot: {
 		paddingHorizontal: 10,
 		paddingVertical: 30,
-		position: "relative",
+	},
+	stepInfoText: {
+		color: Colors.offWhite,
+		fontSize: Fonts.size.input,
 		textAlign: "center",
 	},
 });
 
 function Header(props) {
 	const { wizard, index, text, navigation, info, length } = props;
-
-	const [showInfo, toggleInfo] = useState(true);
 
 	return (
 		<View style={HeaderStyles.header}>
@@ -105,23 +95,30 @@ function Header(props) {
 			<Text style={HeaderStyles.stepIndex}>
 				Step {index + 1} of {length}{" "}
 			</Text>
-			<Text style={HeaderStyles.stepText}>
-				{text}{" "}
-				<Text onPress={() => console.log("Awesome")}>
-					<Icon size={17} color={Colors.offWhite} name="info-circle" />
-				</Text>
-				<View>{showInfo && <Text style={HeaderStyles.stepInfo}>{info}</Text>}</View>
-			</Text>
+			<TextWithInfo
+				text={text}
+				info={info}
+				styles={{
+					root: HeaderStyles.stepInfoRoot,
+					text: HeaderStyles.stepInfoText,
+					info: HeaderStyles.stepInfoInfo,
+				}}
+			/>
 		</View>
 	);
 }
 
+const Styles = StyleSheet.create({
+	container: {
+		...ApplicationStyles.screen.container,
+	},
+});
 export default function RestoreWallet(props) {
 	const wizard = useRef(null);
 	const [currentIndex, setCurrentIndex] = useState(0);
 	const { text, info } = steps[currentIndex].props;
 	return (
-		<>
+		<ScrollView style={Styles.container}>
 			<Header
 				index={currentIndex}
 				navigation={props.navigation}
@@ -132,6 +129,6 @@ export default function RestoreWallet(props) {
 			/>
 
 			<Wizard ref={wizard} currentStep={(i) => setCurrentIndex(i)} steps={steps} />
-		</>
+		</ScrollView>
 	);
 }

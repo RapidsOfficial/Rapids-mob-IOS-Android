@@ -39,11 +39,9 @@ function WalletTerms() {
 			<View>
 				<Buttons text="I ACCEPT & LET'S GO" />
 			</View>
-			<Text>Heelo</Text>
+			<Text>Hello</Text>
 		</View>
 	);
 }
-
-WalletTerms.propTypes = {};
 
 export default WalletTerms;

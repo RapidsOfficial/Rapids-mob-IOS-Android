@@ -9,7 +9,7 @@ import TextWithInfo from "../TextWithInfo";
  *
  */
 
-function WalletHome(props) {
+function WalletNew(props) {
 	const { navigation } = props;
 	return (
 		<View style={Style.container}>
@@ -32,6 +32,10 @@ function WalletHome(props) {
 						info={
 							"You may recover your wallet by selecting 'RESTORE A WALLET' using your 24 mnemonic phrase words"
 						}
+						styles={{
+							text: Style.moreInfoText,
+							info: Style.moreInfoText,
+						}}
 					/>
 				</View>
 			</View>
@@ -39,6 +43,6 @@ function WalletHome(props) {
 	);
 }
 
-WalletHome.propTypes = {};
+WalletNew.propTypes = {};
 
-export default WalletHome;
+export default WalletNew;

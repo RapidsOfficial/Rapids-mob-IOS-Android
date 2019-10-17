@@ -23,10 +23,7 @@ const Styles = StyleSheet.create({
 		width: "100%",
 	},
 	infoText: {
-		color: Colors.lightGrey,
 		fontSize: Fonts.regular,
-		marginRight: 8,
-		textTransform: "uppercase",
 	},
 	infoTooltip: {
 		backgroundColor: Colors.offWhite,
@@ -39,25 +36,26 @@ const Styles = StyleSheet.create({
 		padding: 10,
 		position: "absolute",
 		right: 0,
-		top: 30,
+		top: "150%",
 	},
 });
 
-function TextWithInfo({ text, info }) {
+function TextWithInfo({ text, info, styles = {} }) {
 	const [showTooltip, toggleTooltip] = useState(false);
 
 	return (
-		<View style={Styles.infoContainer}>
+		<View style={[Styles.infoContainer, styles.root]}>
 			<TouchableWithoutFeedback
 				onPress={() => toggleTooltip(!showTooltip)}
-				style={Styles.infoClick}
+				style={[Styles.infoClick, styles.container]}
 			>
-				<Text style={Styles.infoText}>{text}</Text>
-				<Icon size={20} color={Colors.lightGrey} name="info-circle" />
+				<Text style={[Styles.infoText, styles.text]}>
+					{text} <Icon size={20} color={Colors.lightGrey} name="info-circle" />
+				</Text>
 			</TouchableWithoutFeedback>
 			{showTooltip && (
-				<View style={Styles.infoTooltip}>
-					<Text>{info}</Text>
+				<View style={[Styles.infoTooltip, styles.info]}>
+					<Text onPress={() => toggleTooltip(!showTooltip)}>{info}</Text>
 					<Text onPress={() => toggleTooltip(!showTooltip)} style={Styles.infoClose}>
 						Close
 					</Text>
