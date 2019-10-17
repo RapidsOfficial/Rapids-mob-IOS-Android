@@ -25,15 +25,13 @@ const balanceApiClient = axios.create({
 });
 
 function fetchBalance(balanceInfo) {
-  if (!balanceInfo.address ) {
+  if (!balanceInfo.walletId ) {
     return "Address is Required";
   }
-
-  return balanceApiClient.get('public/address', balanceInfo).then((response) => {
+  return balanceApiClient.get(`public/address?walletId=${balanceInfo.walletId}`).then((response) => {
     if (in200s(response.status)) {
       return response.data;
     }
-
     return null;
   });
 }

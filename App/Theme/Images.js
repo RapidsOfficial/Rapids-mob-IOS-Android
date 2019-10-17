@@ -4,4 +4,5 @@
 
 export default {
   logo: require('App/Assets/Images/logo.png'),
+  menuLogo: require('App/Assets/Images/Group3.png'),
 }

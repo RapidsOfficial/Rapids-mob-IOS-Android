@@ -10,7 +10,6 @@ import Style from './WalletLoginStyle';
  */
 
 const WalletLogin = () => {
-  console.log('=-=-=-=-=-=-=-Login')
   return (
     <View style={Style.container}>
       <Text>Hello Wallet Login</Text>
