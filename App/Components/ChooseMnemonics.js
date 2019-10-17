@@ -65,7 +65,8 @@ const WORDS = [
 	"add",
 ];
 
-export default function ChooseMnemonics() {
+export default function ChooseMnemonics(props) {
+	const { goNext } = props;
 	const [selectedWords, setSelectedWords] = useState([]);
 	const options = WORDS.filter((word) => selectedWords.indexOf(word) < 0);
 	return (
@@ -99,7 +100,7 @@ export default function ChooseMnemonics() {
 					</Text>
 				))}
 			</View>
-			<Buttons text="Submit" onPress={() => console.log("Cool")} />
+			<Buttons text="Submit" onPress={() => goNext()} />
 		</View>
 	);
 }
