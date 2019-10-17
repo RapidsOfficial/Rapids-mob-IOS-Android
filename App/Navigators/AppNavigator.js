@@ -5,8 +5,8 @@ import ExampleScreen from "App/Containers/Example/ExampleScreen";
 import SplashScreen from "App/Containers/SplashScreen/SplashScreen";
 import LoadingScreen from "App/Containers/LoadingScreen/LoadingScreen";
 import WalletHome from "App/Containers/WalletHome/WalletHome";
-import Wallet from "App/Containers/Wallet/Wallet";
 import RestoreWallet from "App/Containers/RestoreWallet/RestoreWallet";
+import CreateWallet from "App/Containers/CreateWallet/CreateWallet";
 
 /**
  * The root screen contains the application's navigation.
@@ -23,7 +23,7 @@ const StackNavigator = createStackNavigator(
 		MainScreen: RestoreWallet,
 
 		WalletHome: { screen: WalletHome },
-		Wallet: { screen: Wallet },
+		CreateWallet: { screen: CreateWallet },
 		Example: { screen: ExampleScreen },
 		LoadingScreen: LoadingScreen,
 		RestoreWallet: RestoreWallet,

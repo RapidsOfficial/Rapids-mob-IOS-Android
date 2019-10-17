@@ -9,15 +9,12 @@ import Style from './WalletPassword';
  *
  */
 
-class WalletPassword extends React.Component {
-  render() {
-    return (
-      <View style={Style.container}>
-        <Text>Hello Wallet Password</Text>
-      </View>
-    );
-  }
-  
+const WalletPassword = () => {
+  return (
+    <View style={Style.container}>
+      <Text>Hello Wallet Password</Text>
+    </View>
+  );
 }
 
 WalletPassword.propTypes = {

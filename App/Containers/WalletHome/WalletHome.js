@@ -1,60 +1,66 @@
-import React, { useState } from "react";
-import { View, Image, Text } from "react-native";
-import Style from "./WalletHomeStyle";
-import { Buttons, Images, Colors } from "App/Theme";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import React from "react";
+import { View, ActivityIndicator } from "react-native";
+
+import { connect } from "react-redux";
+import AsyncStorage from "@react-native-community/async-storage";
+import { Dashboard, WalletLogin, WalletNew } from "App/Components";
 
 /**
- * This is an Create Wallet component.
+ * This is an Wallet Home Container.
  *
  */
 
-function WalletHome(props) {
-	const [showTooltip, toggleTooltip] = useState(false);
-	const { navigation } = props;
-	return (
-		<View style={Style.container}>
-			<View>
-				<View style={Style.logoContainer}>
-					<Image style={Style.logo} source={Images.logo} resizeMode={"contain"} />
-				</View>
-				<View style={Style.buttonContainer}>
-					<Buttons
-						text="Create a new wallet"
-						onPress={() =>
-							navigation.navigate("Wallet", {
-								componentToBeRendered: "Info",
-							})
-						}
-					/>
-					<Buttons text="Restore a Wallet" onPress={() => navigation.navigate("RestoreWallet")} />
-					<View style={Style.moreInfoContainer}>
-						<TouchableWithoutFeedback
-							onPress={() => toggleTooltip(!showTooltip)}
-							style={Style.moreInfoClick}
-						>
-							<Text style={Style.moreInfoText}>More Info</Text>
-							<Icon size={20} color={Colors.lightGrey} name="info-circle" />
-						</TouchableWithoutFeedback>
-						{showTooltip && (
-							<View style={Style.moreInfoTooltip}>
-								<Text>
-									You may recover your wallet by selecting 'RESTORE A WALLET' using your 24 mnemonic
-									phrase words{" "}
-								</Text>
-								<Text onPress={() => toggleTooltip(!showTooltip)} style={Style.moreInfoClose}>
-									Close
-								</Text>
-							</View>
-						)}
-					</View>
-				</View>
+class WalletHome extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			walletId: null,
+		};
+	}
+
+	componentDidMount() {
+		this.walletData();
+	}
+
+	walletData = async () => {
+		try {
+			walletId = await AsyncStorage.getItem("walletId");
+			this.setState({ walletId: walletId });
+		} catch (e) {
+			// saving error
+		}
+	};
+
+	render() {
+		const { walletId } = this.state;
+		const { wallet, walletIsLoading } = this.props;
+
+		return (
+			<View style={{ flex: 1 }}>
+				{walletIsLoading ? (
+					<ActivityIndicator size="large" color="#0000ff" />
+				) : walletId && Object.keys(wallet).length ? (
+					<Dashboard />
+				) : walletId ? (
+					<WalletLogin />
+				) : (
+					<WalletNew {...this.props} />
+				)}
 			</View>
-		</View>
-	);
+		);
+	}
 }
 
 WalletHome.propTypes = {};
 
-export default WalletHome;
+const mapStateToProps = (state) => ({
+	wallet: state.wallet.wallet,
+	walletIsLoading: state.wallet.walletIsLoading,
+	fetchWalletFailure: state.wallet.fetchWalletFailure,
+});
+
+export default connect(
+	mapStateToProps,
+	null
+)(WalletHome);
