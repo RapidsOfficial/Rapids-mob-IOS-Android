@@ -1,37 +1,44 @@
-import React from 'react'
-import { View, ActivityIndicator, Text, Image } from 'react-native'
-import { Buttons } from 'App/Theme'
-import { Images } from 'App/Theme'
-import Style from './WalletNewStyle';
-
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import React from "react";
+import { View, Image } from "react-native";
+import Style from "./WalletNewStyle";
+import { Buttons, Images } from "App/Theme";
+import TextWithInfo from "../TextWithInfo";
 
 /**
- * This is an Wallet New component.
+ * This is an Wallet Home Container.
  *
  */
 
-const WalletNew = (props) => {
-  return (
-    <View style={Style.container}>
-      <View style={Style.logoContainer}>
-        <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
-      </View>
-      
-      <View  style={Style.buttonContainer}>
-        <Buttons 
-          text="Create a new wallet"  
-          onPress={() => props.navigation.navigate('CreateWallet', {
-            componentToBeRendered: "Info"
-          })}
-        />
-        <Buttons text="Restore a Wallet" />
-      </View>
-    </View>
-  );
+function WalletHome(props) {
+	const { navigation } = props;
+	return (
+		<View style={Style.container}>
+			<View>
+				<View style={Style.logoContainer}>
+					<Image style={Style.logo} source={Images.logo} resizeMode={"contain"} />
+				</View>
+				<View style={Style.buttonContainer}>
+					<Buttons
+						text="Create a new wallet"
+						onPress={() =>
+							navigation.navigate("Wallet", {
+								componentToBeRendered: "Info",
+							})
+						}
+					/>
+					<Buttons text="Restore a Wallet" onPress={() => navigation.navigate("WalletRestore")} />
+					<TextWithInfo
+						text={"More Info"}
+						info={
+							"You may recover your wallet by selecting 'RESTORE A WALLET' using your 24 mnemonic phrase words"
+						}
+					/>
+				</View>
+			</View>
+		</View>
+	);
 }
 
-WalletNew.propTypes = {
-}
+WalletHome.propTypes = {};
 
-export default WalletNew;
+export default WalletHome;
