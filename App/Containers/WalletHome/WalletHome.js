@@ -4,9 +4,11 @@ import { View, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux';
 import WalletActions from 'App/Stores/Wallet/Actions';
 import BalanceActions from 'App/Stores/Balance/Actions';
+import TransactionAction from 'App/Stores/Transaction/Actions';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import { Dashboard, WalletLogin, WalletNew } from 'App/Components'
+import { transactionService } from '../../Services/TransactionService';
 
 /**
  * This is an Wallet Home Container.
@@ -49,19 +51,26 @@ class WalletHome extends React.Component {
 
   render() {
     const { walletId } = this.state;
-    const { wallet, walletIsLoading, balance, fetchBalance } = this.props;
+    const { 
+      wallet, walletIsLoading, balance, 
+      fetchBalance, navigation, fetchTransactionSuccess,
+      createTransaction, fetchTransactionLoading
+    } = this.props;
 
     return (
       <View style={{flex: 1}}>
-        {walletIsLoading ? (
+        {walletIsLoading || fetchTransactionLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
           walletId && Object.keys(wallet).length ?
             <Dashboard
               key="dashboard"
-              walletId={walletId}
+              wallet={wallet}
               balance={balance}
               fetchBalance={fetchBalance}
+              fetchTransactionSuccess={fetchTransactionSuccess}
+              createTransaction={createTransaction}
+              navigation={navigation}
             />
           :
             walletId ?
@@ -87,12 +96,15 @@ const mapStateToProps = (state) => ({
   wallet: state.wallet.wallet,
   balance: state.balance.balance,
   walletIsLoading: state.wallet.walletIsLoading,
+  fetchTransactionLoading: state.transaction.fetchTransactionLoading,
   fetchWalletFailure: state.wallet.fetchWalletFailure,
+  fetchTransactionSuccess: state.transaction.fetchTransactionSuccess
   // fetchBalanceLoading: state.wallet.fetchBalanceLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchBalance: (balanceInfo) => dispatch(BalanceActions.fetchBalance(balanceInfo)),
+  createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo))
 });
 
 export default connect(

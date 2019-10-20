@@ -16,10 +16,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginBottom: 5,
   },
-  contentContainer: {
-    flex: 1
-  },
-  cardContent: {
-    padding: 10
-  }
+  // contentContainer: {
+  //   flex: 1
+  // }
 })

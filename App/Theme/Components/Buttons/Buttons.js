@@ -46,7 +46,7 @@ Buttons.propTypes = {
   accent: PropTypes.bool,
   onPress: PropTypes.func,
   onLongPress: PropTypes.func,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
   upperCase: PropTypes.bool,
   icon: PropTypes.oneOfType([
       PropTypes.string, 

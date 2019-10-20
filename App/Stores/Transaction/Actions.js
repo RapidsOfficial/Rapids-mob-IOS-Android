@@ -2,11 +2,11 @@ import { createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
   // Create Transaction
-  createTransaction: ['transcationInfo'],
+  createTransaction: ['transactionInfo'],
   //fetch Transaction informations
-  fetchTransaction: ['transcationInfo'],
+  fetchTransaction: ['transactionInfo'],
   // The operation has started and is loading
-  fetchTransactions: ['transcationInfo'],
+  fetchTransactions: ['transactionInfo'],
   // The operation has started and is loading
   fetchTransactionLoading: null,
   // Transaction informations were successfully fetched

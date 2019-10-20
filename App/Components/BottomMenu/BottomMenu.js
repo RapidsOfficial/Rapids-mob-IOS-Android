@@ -10,12 +10,12 @@ import Style from './BottomMenuStyle';
  *
  */
 
-const BottomMenu = () => {
+const BottomMenu = ({setScreen}) => {
   return (
     <View style={Style.dashboardMenu}>
-      <Icon style={Style.dashboardMenuIcon} name="call-received" size={30} color="#51B04D" />
+      <Icon style={Style.dashboardMenuIcon} name="call-received" size={30} color="#51B04D" onPress={() => setScreen('Receive')} />
       <Image style={Style.logo} source={Images.menuLogo} resizeMode={'contain'} />
-      <Icon style={Style.dashboardMenuIcon} name="send" size={30} color="#51B04D" />
+      <Icon style={Style.dashboardMenuIcon} name="send" size={30} color="#51B04D" onPress={() => { console.log('=-=-=-=-'); setScreen('Send');}} />
     </View>
   );
 }

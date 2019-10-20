@@ -60,7 +60,8 @@ export const Input = (props) => {
         titleTextStyle={Style.titleTextStyle}
         affixTextStyle={Style.affixTextStyle} 
         lineWidth={0}    
-        textColor={"white"} 
+        activeLineWidth={0}
+        textColor={props.textColor || "white"} 
       />
     );
 };

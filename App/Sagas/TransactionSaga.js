@@ -11,7 +11,7 @@ export function* createTransaction(action) {
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
   yield put(TransactionActions.fetchTransactionLoading());
-
+  console.log(action, '=-=-=-=-=-=>Action')
   // Create transaction from an API
   const transaction = yield call(transactionService.createTransaction, action.transactionInfo);
   if(!transaction) {

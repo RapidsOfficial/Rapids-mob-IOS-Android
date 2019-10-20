@@ -15,7 +15,6 @@ export default StyleSheet.create({
     height: 50,
     width: width - 25,
     justifyContent: 'center',
-    // backgroundColor: '#51B04D',
     borderRadius: 6,
     borderColor: '#EE5C7F',
     borderWidth: 2,
@@ -23,7 +22,8 @@ export default StyleSheet.create({
     marginBottom: 10
   },
   labelTextStyle: {
-    color: 'transparent'
+    color: 'transparent',
+    marginTop: -15
   },
   affixTextStyle: {
     ...Fonts.style.normal,
