@@ -22,7 +22,7 @@ const walletApiClient = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  timeout: 3000,
+  timeout: 500000,
 });
 
 function createWallet(walletInfo) {

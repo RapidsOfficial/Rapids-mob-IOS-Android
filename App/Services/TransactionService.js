@@ -21,7 +21,7 @@ const transactionApiClient = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  timeout: 3000,
+  timeout: 50000,
 });
 
 function createTransaction(transactionInfo) {
@@ -33,12 +33,16 @@ function createTransaction(transactionInfo) {
   }
 
   return transactionApiClient.post('public/send', transactionInfo).then((response) => {
-    if (in200s(response.status)) {
-      return response.data;
+    if (response.data && response.data.returnData) {
+      return response.data.returnData;
     }
 
     return null;
-  });
+  })
+  .catch(function (error) {
+    // handle error
+    return null;
+  });;
 }
 
 async function fetchTransaction(transactionInfo) {

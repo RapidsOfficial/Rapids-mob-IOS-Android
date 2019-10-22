@@ -53,13 +53,14 @@ class WalletHome extends React.Component {
     const { walletId } = this.state;
     const { 
       wallet, walletIsLoading, balance, 
-      fetchBalance, navigation, fetchTransactionSuccess,
-      createTransaction, fetchTransactionLoading
+      fetchBalance, navigation, transaction,
+      createTransaction, transactionIsLoading, transactionErrorMessage,
+      fetchTransactionFailure, fetchTransactionSuccess
     } = this.props;
 
     return (
       <View style={{flex: 1}}>
-        {walletIsLoading || fetchTransactionLoading ? (
+        {walletIsLoading || transactionIsLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
           walletId && Object.keys(wallet).length ?
@@ -68,8 +69,11 @@ class WalletHome extends React.Component {
               wallet={wallet}
               balance={balance}
               fetchBalance={fetchBalance}
-              fetchTransactionSuccess={fetchTransactionSuccess}
+              transaction={transaction}
               createTransaction={createTransaction}
+              fetchTransactionFailure={fetchTransactionFailure}
+              fetchTransactionSuccess={fetchTransactionSuccess}
+              transactionErrorMessage={transactionErrorMessage}
               navigation={navigation}
             />
           :
@@ -96,15 +100,18 @@ const mapStateToProps = (state) => ({
   wallet: state.wallet.wallet,
   balance: state.balance.balance,
   walletIsLoading: state.wallet.walletIsLoading,
-  fetchTransactionLoading: state.transaction.fetchTransactionLoading,
+  transactionIsLoading: state.transaction.transactionIsLoading,
   fetchWalletFailure: state.wallet.fetchWalletFailure,
-  fetchTransactionSuccess: state.transaction.fetchTransactionSuccess
+  transaction: state.transaction.transaction,
+  transactionErrorMessage: state.transaction.transactionErrorMessage
   // fetchBalanceLoading: state.wallet.fetchBalanceLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchBalance: (balanceInfo) => dispatch(BalanceActions.fetchBalance(balanceInfo)),
-  createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo))
+  createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo)),
+  fetchTransactionFailure: (errorMessage) => dispatch(TransactionAction.fetchTransactionFailure(errorMessage)),
+  fetchTransactionSuccess: (transaction) => dispatch(TransactionAction.fetchTransactionSuccess(transaction))
 });
 
 export default connect(

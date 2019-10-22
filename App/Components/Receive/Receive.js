@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, Clipboard } from 'react-native';
+import QRCode from 'react-native-qrcode-svg';
+
 import { Cards } from 'App/Theme';
 import { Buttons, Input } from 'App/Theme';
 
@@ -33,6 +35,10 @@ const Receive = (props) => {
       />
 
       <Text onPress={copyAddress}>Copy Address</Text>
+
+      <QRCode
+        value={address}
+      />
 
       <Input 
         label="Label(optional)" 

@@ -15,7 +15,7 @@ const Home = ({ balance }) => {
         content={
           <View style={Style.cardContent}>
             <Text>Mobile Wallet!</Text>
-            <Text>{`${balance}M`}</Text>
+            <Text>{`${balance}`}</Text>
           </View>
         } 
       />

@@ -11,14 +11,14 @@ export function* createTransaction(action) {
   // Dispatch a redux action using `put()`
   // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
   yield put(TransactionActions.fetchTransactionLoading());
-  console.log(action, '=-=-=-=-=-=>Action')
   // Create transaction from an API
   const transaction = yield call(transactionService.createTransaction, action.transactionInfo);
-  if(!transaction) {
+
+  if(transaction) {
     yield put(TransactionActions.fetchTransactionSuccess(transaction));
   } else {
     yield put(
-      TransactionActions.fetchTransactionFailure('There was an error while creating transaction.')
+      TransactionActions.fetchTransactionFailure('There was an error while sending payment.')
     );
   }
 }

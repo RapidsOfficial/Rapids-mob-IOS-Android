@@ -43,30 +43,33 @@ const Send = ({ wallet, setScreen, createTransaction }) => {
           </View>
         } 
       />
-      <Input 
-        label="Recipent Name" 
-        onChangeText={setRecipentName}
-        value={recipentName}
-        textColor={"black"}
-      />
-      <Input 
-        label="Recipent Address" 
-        onChangeText={setRecipentAddress}
-        value={recipentAddress}
-        textColor={"black"}
-      />
-      <Input 
-        label="Amount" 
-        onChangeText={setAmount}
-        value={amount}
-        textColor={"black"}
-      />
-      <View style={Style.createButton}>
-        <Buttons text="Send Payment" onPress={() => sendPayment()} />
+      <View>
+        <Input 
+          label="Recipent Name" 
+          onChangeText={setRecipentName}
+          value={recipentName}
+          textColor={"black"}
+        />
+        <Input 
+          label="Recipent Address" 
+          onChangeText={setRecipentAddress}
+          value={recipentAddress}
+          textColor={"black"}
+        />
+        <Input 
+          label="Amount" 
+          onChangeText={setAmount}
+          value={amount}
+          textColor={"black"}
+        />
+        <View style={Style.createButton}>
+          <Buttons text="Send Payment" onPress={() => sendPayment()} />
+        </View>
+        <View style={Style.createButton}>
+          <Buttons text="Cancel" onPress={() => setScreen('Dashboard')} />
+        </View>
       </View>
-      <View style={Style.createButton}>
-        <Buttons text="Cancel" onPress={() => setScreen('Dashboard')} />
-      </View>
+      
     </View>
   );
 }

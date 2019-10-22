@@ -21,7 +21,7 @@ const balanceApiClient = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
-  timeout: 3000,
+  timeout: 150000,
 });
 
 function fetchBalance(balanceInfo) {
@@ -30,9 +30,12 @@ function fetchBalance(balanceInfo) {
   }
   return balanceApiClient.get(`public/address?walletId=${balanceInfo.walletId}`).then((response) => {
     if (in200s(response.status)) {
-      return response.data;
+      return response.data.balance;
     }
     return null;
+  })
+  .catch(function (error) {
+    console.log(error, '=-=-=-=-=>eror');
   });
 }
 
