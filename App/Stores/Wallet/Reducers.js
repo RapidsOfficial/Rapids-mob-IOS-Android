@@ -3,7 +3,6 @@
  *
  * @see https://redux.js.org/basics/reducers
  */
-import AsyncStorage from '@react-native-community/async-storage';
 import { INITIAL_STATE } from './InitialState'
 import { createReducer } from 'reduxsauce'
 import { WalletTypes } from './Actions'
@@ -16,6 +15,7 @@ export const fetchWalletLoading = (state) => ({
 
 export const fetchWalletSuccess = (state, { wallet }) => ({
   ...state,
+  walletId: wallet.walletId,
   wallet: wallet,
   walletIsLoading: false,
   walletErrorMessage: null,
@@ -23,25 +23,16 @@ export const fetchWalletSuccess = (state, { wallet }) => ({
 
 export const fetchWalletFailure = (state, { errorMessage }) => ({
   ...state,
+  walletId: '',
   wallet: {},
   walletIsLoading: false,
   walletErrorMessage: errorMessage,
 })
 
 export const resetWallet = (state, { errorMessage }) => {
-  storeData = async () => {
-    try {
-      await AsyncStorage.removeItem('walletId');
-
-    } catch (e) {
-      console.log(e, 'error')
-      // saving error
-    }
-  };
-
-  storeData();
   return ({
     ...state,
+    walletId: '',
     wallet: {},
     walletIsLoading: false,
     walletErrorMessage: errorMessage,

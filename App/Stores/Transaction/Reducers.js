@@ -30,10 +30,17 @@ export const fetchTransactionsSuccess = (state, { transactions }) => ({
 
 export const fetchTransactionFailure = (state, { errorMessage }) => ({
   ...state,
-  transaction: {},
+  transaction: '',
   transactionIsLoading: false,
   transactionErrorMessage: errorMessage,
 })
+
+export const resetTransaction = (state) => ({
+  ...state,
+  transaction: '',
+  transactionIsLoading: false,
+  transactionErrorMessage: null,
+});
 
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
@@ -43,4 +50,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [TransactionTypes.FETCH_TRANSACTION_SUCCESS]: fetchTransactionSuccess,
   [TransactionTypes.FETCH_TRANSACTIONS_SUCCESS]: fetchTransactionsSuccess,
   [TransactionTypes.FETCH_TRANSACTION_FAILURE]: fetchTransactionFailure,
+  [TransactionTypes.RESET_TRANSACTION]: resetTransaction,
 })

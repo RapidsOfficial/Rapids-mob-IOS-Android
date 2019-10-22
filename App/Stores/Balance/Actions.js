@@ -15,6 +15,8 @@ const { Types, Creators } = createActions({
   fetchBalanceFailure: ['errorMessage'],
   // An error occurred
   fetchAddressFailure: ['errorMessage'],
+  //reset Balance
+  resetBalance: null
 });
 
 export const BalanceTypes = Types;

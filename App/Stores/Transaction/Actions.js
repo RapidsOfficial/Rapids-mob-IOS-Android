@@ -15,6 +15,8 @@ const { Types, Creators } = createActions({
   fetchTransactionsSuccess: ['transactions'],
   // An error occurred
   fetchTransactionFailure: ['errorMessage'],
+  //reset Transaction
+  resetTransaction: null
 });
 
 export const TransactionTypes = Types;

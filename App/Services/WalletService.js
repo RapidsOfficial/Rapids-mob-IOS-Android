@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { Config } from 'App/Config'
 import { is, curryN, gte } from 'ramda'
-import AsyncStorage from '@react-native-community/async-storage';
 
 const isWithin = curryN(3, (min, max, value) => {
   const isNumber = is(Number)
@@ -35,6 +34,10 @@ function createWallet(walletInfo) {
       return response.data;
     }
 
+    return null;
+  })
+  .catch((error) => {
+    console.log(error)
     return null;
   });
 }

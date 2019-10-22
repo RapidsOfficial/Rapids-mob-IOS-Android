@@ -6,9 +6,7 @@ import WalletActions from 'App/Stores/Wallet/Actions';
 import BalanceActions from 'App/Stores/Balance/Actions';
 import TransactionAction from 'App/Stores/Transaction/Actions';
 
-import AsyncStorage from '@react-native-community/async-storage';
 import { Dashboard, WalletLogin, WalletNew } from 'App/Components'
-import { transactionService } from '../../Services/TransactionService';
 
 /**
  * This is an Wallet Home Container.
@@ -19,51 +17,22 @@ class WalletHome extends React.Component {
   
   constructor(props) {
     super(props);
-
-    this.state = {
-      walletId: null
-    };
-  }
-
-  componentDidMount() {
-    this.walletData();
-  }
-
-  walletData = async () => {
-    try {
-      walletId = await AsyncStorage.getItem('walletId');
-
-      if(!walletId && Object.keys(this.props.wallet).length) {
-        walletId = this.prop.wallet.walletId;
-      }
-
-      this.setState({ walletId: walletId });
-    } catch (e) {
-      // saving error
-    }
-  };
-
-  componentWillReceiveProps(nextProps) {
-    if(nextProps.wallet !== this.props.wallet ){
-      this.walletData();
-    }
   }
 
   render() {
-    const { walletId } = this.state;
     const { 
-      wallet, walletIsLoading, balance, 
+      walletId, wallet, walletIsLoading, balance, 
       fetchBalance, navigation, transaction,
       createTransaction, transactionIsLoading, transactionErrorMessage,
       fetchTransactionFailure, fetchTransactionSuccess
     } = this.props;
-
+    
     return (
       <View style={{flex: 1}}>
         {walletIsLoading || transactionIsLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
-        ) : (
-          walletId && Object.keys(wallet).length ?
+        ) :
+          walletId && Object.keys(wallet).length ? (
             <Dashboard
               key="dashboard"
               wallet={wallet}
@@ -76,17 +45,23 @@ class WalletHome extends React.Component {
               transactionErrorMessage={transactionErrorMessage}
               navigation={navigation}
             />
+          )
           :
             walletId ?
+            (
               <WalletLogin
                 key="login"
               />
+            )
             :
+            !walletId &&
+            (
               <WalletNew 
                 key="new"
                 {...this.props} 
               />
-        )}
+            )
+        }
       </View>
     );
   }
@@ -97,6 +72,7 @@ WalletHome.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
+  walletId: state.wallet.walletId,
   wallet: state.wallet.wallet,
   balance: state.balance.balance,
   walletIsLoading: state.wallet.walletIsLoading,
@@ -104,10 +80,10 @@ const mapStateToProps = (state) => ({
   fetchWalletFailure: state.wallet.fetchWalletFailure,
   transaction: state.transaction.transaction,
   transactionErrorMessage: state.transaction.transactionErrorMessage
-  // fetchBalanceLoading: state.wallet.fetchBalanceLoading
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchWalletFailure: () => dispatch(WalletActions.fetchWalletFailure()),
   fetchBalance: (balanceInfo) => dispatch(BalanceActions.fetchBalance(balanceInfo)),
   createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo)),
   fetchTransactionFailure: (errorMessage) => dispatch(TransactionAction.fetchTransactionFailure(errorMessage)),

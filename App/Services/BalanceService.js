@@ -35,7 +35,7 @@ function fetchBalance(balanceInfo) {
     return null;
   })
   .catch(function (error) {
-    console.log(error, '=-=-=-=-=>eror');
+    return null;
   });
 }
 

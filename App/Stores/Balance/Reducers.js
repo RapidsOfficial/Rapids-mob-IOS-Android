@@ -42,6 +42,14 @@ export const fetchAddressFailure = (state, { errorMessage }) => ({
   errorMessage: errorMessage,
 });
 
+export const resetBalance = (state) => ({
+  ...state,
+  balance: {},
+  address: {},
+  balanceIsLoading: false,
+  errorMessage: null,
+});
+
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
@@ -51,4 +59,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [BalanceTypes.FETCH_ADDRESS_SUCCESS]: fetchAddressSuccess,
   [BalanceTypes.FETCH_BALANCE_FAILURE]: fetchBalanceFailure,
   [BalanceTypes.FETCH_ADDRESS_FAILURE]: fetchAddressFailure,
+  [BalanceTypes.RESET_BALANCE]: resetBalance,
 });

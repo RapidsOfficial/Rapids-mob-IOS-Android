@@ -33,7 +33,7 @@ const Dashboard = (props) => {
     props.fetchBalance({walletId: props.wallet.walletId});
     Alert.alert(
       'Error',
-      props.transactionErrorMessage,
+      JSON.stringify(props.transactionErrorMessage),
       [
         {text: 'OK', onPress: () => props.fetchTransactionFailure(false)},
       ],
@@ -44,14 +44,14 @@ const Dashboard = (props) => {
   if(props.transaction) {
     Alert.alert(
       'Transaction Success',
-      props.transaction,
+      JSON.stringify(props.transaction),
       [
         {text: 'OK', onPress: () => props.fetchTransactionSuccess(false)},
       ],
       {cancelable: false},
     );
   }
-
+  
   return (
     <View style={Style.container}>
       <Header {...props} />

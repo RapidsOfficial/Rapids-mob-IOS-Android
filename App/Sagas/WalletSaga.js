@@ -1,7 +1,8 @@
 import { put, call } from 'redux-saga/effects'
 import WalletActions from 'App/Stores/Wallet/Actions'
 import { walletService } from 'App/Services/WalletService'
-import AsyncStorage from '@react-native-community/async-storage';
+// import AsyncStorage from '@react-native-community/async-storage';
+import NavigationService from 'App/Services/NavigationService'
 
 /**
  * A saga can contain multiple functions.
@@ -17,18 +18,8 @@ export function* createWallet(action) {
   const wallet = yield call(walletService.createWallet, action.walletInfo);
 
   if (wallet && wallet.walletUser) {
-    storeData = async () => {
-      try {
-        await AsyncStorage.setItem('walletId', wallet.walletUser.walletId);
-      } catch (e) {
-        console.log(e, 'error')
-        // saving error
-      }
-    };
-
-    storeData();
-
     yield put(WalletActions.fetchWalletSuccess(wallet.walletUser));
+    NavigationService.navigate('WalletHome');
   } else {
     yield put(
       WalletActions.fetchWalletFailure('There was an error while creating wallet.')
