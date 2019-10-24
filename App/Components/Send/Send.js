@@ -10,13 +10,13 @@ import Style from './SendStyle';
  *
  */
 
-const Send = ({ wallet, setScreen, createTransaction }) => {
+const Send = ({ selectedWallet, setScreen, createTransaction }) => {
   const [ recipentName, setRecipentName ] = useState('');
   const [ recipentAddress, setRecipentAddress ] = useState('');
   const [ amount, setAmount ] = useState(0);
 
-  const address = wallet && wallet.addresses ? wallet.addresses[0].address : '';
-  const walletId = wallet && wallet.walletId ? wallet.walletId : '';
+  const address = selectedWallet && selectedWallet.addresses ? selectedWallet.addresses[0].address : '';
+  const walletId = selectedWallet && selectedWallet.walletId ? selectedWallet.walletId : '';
 
   sendPayment = () => {
     if(!walletId || !amount || !recipentAddress) 

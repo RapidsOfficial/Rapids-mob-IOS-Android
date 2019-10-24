@@ -15,7 +15,7 @@ import WalletActions from 'App/Stores/Wallet/Actions';
 class CreateWallet extends React.Component {
 
   render() {
-    const { navigation, wallet, createWallet, walletIsLoading } = this.props;
+    const { navigation, wallets, createWallet, walletIsLoading } = this.props;
     const componentToBeRendered = navigation.getParam('componentToBeRendered');
 
     return (
@@ -25,7 +25,7 @@ class CreateWallet extends React.Component {
         ) : (
           <View style={Style.componentContainer}>
             <View style={Style.walletNavigator}>
-              <Icon style={Style.walletNavIcon} name="arrow-back" size={30} color="#51B04D" />
+              <Icon style={Style.walletNavIcon} name="arrow-back" size={30} color="#51B04D" onPress={() => navigation.goBack()} />
             </View>
             {componentToBeRendered === 'Terms' ?
                 <WalletTerms  />
@@ -35,7 +35,7 @@ class CreateWallet extends React.Component {
               :
                 componentToBeRendered === 'Info' ?
                   <WalletInfo
-                    wallet={wallet}
+                    wallets={wallets}
                     walletIsLoading={walletIsLoading}
                     createWallet={createWallet}
                   />
@@ -54,7 +54,7 @@ CreateWallet.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  wallet: state.wallet.wallet,
+  wallets: state.wallet.wallets,
   walletIsLoading: state.wallet.walletIsLoading,
 });
 

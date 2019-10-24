@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { View } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 
 import { Card } from 'react-native-material-ui';
 import Style from './CardsStyle';
@@ -13,11 +13,13 @@ export const Cards = (props) => {
     } = props;
 
     return (
-      <View
-        style={Style.card}
-      >
-        {content}
-      </View>
+      <TouchableHighlight onPress={onPress} underlayColor="white">
+        <View
+          style={Style.card}
+        >
+          {content}
+        </View>
+      </TouchableHighlight>
     );
 };
 

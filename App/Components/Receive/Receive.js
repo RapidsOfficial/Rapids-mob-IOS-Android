@@ -12,11 +12,11 @@ import Style from './ReceiveStyle';
  *
  */
 
-const Receive = (props) => {
+const Receive = ({ selectedWallet }) => {
   const [ label, setLabel ] = useState('');
   const [ amount, setAmount ] = useState(0);
 
-  const address = props.wallet && props.wallet.addresses ? props.wallet.addresses[0].address : '';
+  const address = selectedWallet && selectedWallet.addresses ? selectedWallet.addresses[0].address : '';
 
   copyAddress = () => {
     Clipboard.setString(address);

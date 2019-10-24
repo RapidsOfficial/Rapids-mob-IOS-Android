@@ -156,6 +156,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
+            debuggable true
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -183,6 +184,9 @@ android {
     //     pickFirst '**/x86/libjsc.so'
     //     pickFirst '**/armeabi-v7a/libjsc.so'
     // }
+    lintOptions {
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {

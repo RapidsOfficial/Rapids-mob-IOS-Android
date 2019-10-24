@@ -18,7 +18,8 @@ const WalletInfo = (props) => {
   const createWallet = () => {
 
     const wallet = {
-      walletName: walletName
+      walletName: walletName,
+      wallets: props.wallets && props.wallets.length ? props.wallets : []
     };
 
     props.createWallet(wallet);

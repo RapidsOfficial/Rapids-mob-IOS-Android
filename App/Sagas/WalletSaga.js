@@ -1,7 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import WalletActions from 'App/Stores/Wallet/Actions'
 import { walletService } from 'App/Services/WalletService'
-// import AsyncStorage from '@react-native-community/async-storage';
 import NavigationService from 'App/Services/NavigationService'
 
 /**
@@ -15,10 +14,10 @@ export function* createWallet(action) {
   yield put(WalletActions.fetchWalletLoading());
 
   // Fetch wallet informations from an API
-  const wallet = yield call(walletService.createWallet, action.walletInfo);
+  const wallets = yield call(walletService.createWallet, action.walletInfo);
 
-  if (wallet && wallet.walletUser) {
-    yield put(WalletActions.fetchWalletSuccess(wallet.walletUser));
+  if (wallets && wallets.length) {
+    yield put(WalletActions.fetchWalletSuccess(wallets));
     NavigationService.navigate('WalletHome');
   } else {
     yield put(

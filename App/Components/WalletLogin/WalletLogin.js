@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ActivityIndicator, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import Style from './WalletLoginStyle';
 
 // import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,7 +12,7 @@ import Style from './WalletLoginStyle';
 const WalletLogin = () => {
   return (
     <View style={Style.container}>
-      <Text>Hello Wallet Login</Text>
+      <Text>Hello Wallet Login Screenn</Text>
     </View>
   );  
 }

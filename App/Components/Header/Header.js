@@ -13,7 +13,7 @@ import Style from './HeaderStyle';
 const Header = ({navigation}) => {
   return (
     <View style={Style.walletNavigator}>
-      <Icon style={Style.walletNavIcon} name="arrow-back" size={30} color="#51B04D" onPress={() => navigation.goBack()} />
+      <Icon style={Style.walletNavIcon} name="menu" size={30} color="#51B04D" onPress={() => navigation.openDrawer()} />
       <Image style={Style.logo} source={Images.logo} resizeMode={'contain'} />
       <Icon style={Style.walletNavIcon} name="lock" size={30} color="#51B04D" />
     </View>

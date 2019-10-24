@@ -29,9 +29,11 @@ function createWallet(walletInfo) {
     return "Wallet Name is Required";
   }
 
-  return walletApiClient.post('public/wallet', walletInfo).then((response) => {
+  return walletApiClient.post('public/wallet', { walletName: walletInfo.walletName }).then((response) => {
     if (in200s(response.status)) {
-      return response.data;
+      let wallets = walletInfo.wallets;
+      wallets.push(response.data.walletUser);
+      return wallets;
     }
 
     return null;

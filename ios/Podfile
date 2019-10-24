@@ -35,7 +35,7 @@ target 'wallet' do
   
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
-  pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
+  # pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
 
   target 'walletTests' do
     inherit! :search_paths

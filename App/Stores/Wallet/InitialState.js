@@ -3,7 +3,8 @@
  */
 export const INITIAL_STATE = {
   walletId: '',
-  wallet: {},
+  selectedWallet: {},
+  wallets: [],
   walletIsLoading: false,
   walletErrorMessage: null,
 }

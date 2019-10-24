@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Modal, Alert, TouchableHighlight } from 'react-native';
+import { View, Alert } from 'react-native';
 import Style from './DashbaordStyle';
-import { Header, BottomMenu, Home, Send } from 'App/Components';
-import { Receive } from '..';
+import { Header, BottomMenu, Home, Send, Receive, SelectWallet } from 'App/Components';
 
 /**
  * This is an Wallet Dashboard Component.
@@ -11,26 +10,44 @@ import { Receive } from '..';
 
 const Dashboard = (props) => {
   const [ screen, setScreen ] = useState('Dashboard');
+  const [ selectedPaymentType, setSelectedPaymentType ] = useState('');
+
   let balance = Object.keys(props.balance).length ? props.balance.balance : 0;
   
   useEffect(() => {
-    if(props.wallet.walletId)
-      props.fetchBalance({walletId: props.wallet.walletId});
-  }, [props.wallet]);
+    if(props.wallets && props.wallets.length && props.wallets[0].walletId)
+      props.fetchBalance({walletId: props.wallets[0].walletId});
+  }, [props.wallets]);
 
   renderScreen = () => {
     switch(screen) {
       case 'Dashboard':
         return <Home balance={balance} />;
+      case 'SelectWallet':
+        return <SelectWallet 
+          selectedPaymentType={selectedPaymentType}
+          setScreen={setScreen}
+          wallets={props.wallets}
+          selectWallet={props.selectWallet}
+        />
       case 'Receive':
-        return <Receive balance={balance} setScreen={setScreen} {...props} />;
+        return <Receive 
+          balance={balance} 
+          setScreen={setScreen} 
+          {...props} 
+        />;
       case 'Send':
-          return <Send balance={balance} setScreen={setScreen} {...props} />; 
+        return <Send 
+          setScreen={setScreen}
+          selectedWallet={props.selectedWallet} 
+          createTransaction={props.createTransaction} 
+        />; 
     } 
   };
 
   if(props.transactionErrorMessage) {
-    props.fetchBalance({walletId: props.wallet.walletId});
+    if(props.selectedWallet && Object.keys(props.selectedWallet).length && props.selectedWallet[0].walletId)
+      props.fetchBalance({walletId: props.selectedWallet[0].walletId});
     Alert.alert(
       'Error',
       JSON.stringify(props.transactionErrorMessage),
@@ -56,7 +73,7 @@ const Dashboard = (props) => {
     <View style={Style.container}>
       <Header {...props} />
       {renderScreen()}
-      <BottomMenu setScreen={setScreen} {...props} />
+      <BottomMenu setSelectedPaymentType={setSelectedPaymentType} setScreen={setScreen} {...props} />
     </View>
   );
 }

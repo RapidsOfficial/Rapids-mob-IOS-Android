@@ -10,12 +10,30 @@ import Style from './BottomMenuStyle';
  *
  */
 
-const BottomMenu = ({setScreen}) => {
+const BottomMenu = ({ setScreen, setSelectedPaymentType }) => {
   return (
     <View style={Style.dashboardMenu}>
-      <Icon style={Style.dashboardMenuIcon} name="call-received" size={30} color="#51B04D" onPress={() => setScreen('Receive')} />
+      <Icon 
+        style={Style.dashboardMenuIcon} 
+        name="call-received" 
+        size={30} 
+        color="#51B04D" 
+        onPress={() => {
+          setSelectedPaymentType('Receive');
+          setScreen('SelectWallet');
+        }} 
+      />
       <Image style={Style.logo} source={Images.menuLogo} resizeMode={'contain'} />
-      <Icon style={Style.dashboardMenuIcon} name="send" size={30} color="#51B04D" onPress={() => { console.log('=-=-=-=-'); setScreen('Send');}} />
+      <Icon 
+        style={Style.dashboardMenuIcon} 
+        name="send" 
+        size={30} 
+        color="#51B04D" 
+        onPress={() => { 
+          setSelectedPaymentType('Send') 
+          setScreen('SelectWallet');
+        }} 
+      />
     </View>
   );
 }

@@ -2,8 +2,8 @@ import { createAppContainer, createStackNavigator } from 'react-navigation'
 
 import WalletHome from 'App/Containers/WalletHome/WalletHome';
 import CreateWallet from 'App/Containers/CreateWallet/CreateWallet';
-import ExampleScreen from 'App/Containers/Example/ExampleScreen';
 import SplashScreen from 'App/Containers/SplashScreen/SplashScreen';
+import LeftDrawer from "./LeftDrawer"
 
 /**
  * The root screen contains the application's navigation.
@@ -21,13 +21,14 @@ const StackNavigator = createStackNavigator(
 
     WalletHome: { screen: WalletHome },
     CreateWallet: { screen: CreateWallet },
-    Example: { screen: ExampleScreen }
+    LeftDrawer: { screen: LeftDrawer }
   },
   {
     // By default the application will show the splash screen
-    initialRouteName: 'SplashScreen',
+    initialRouteName: 'LeftDrawer',
     // See https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig
     headerMode: 'none',
+    swipeEnabled: false
   }
 )
 
