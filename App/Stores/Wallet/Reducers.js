@@ -49,6 +49,13 @@ export const resetWallet = (state, { errorMessage }) => {
   });
 }
 
+export const setNavigation = (state, { navigation }) => {
+  return ({
+    ...state,
+    navigations: navigations
+  });
+}
+
 /**
  * @see https://github.com/infinitered/reduxsauce#createreducer
  */
@@ -58,4 +65,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [WalletTypes.FETCH_WALLET_SUCCESS]: fetchWalletSuccess,
   [WalletTypes.FETCH_WALLET_FAILURE]: fetchWalletFailure,
   [WalletTypes.RESET_WALLET]: resetWallet,
+  [WalletTypes.SET_NAVIGATION]: setNavigation,
+
 })

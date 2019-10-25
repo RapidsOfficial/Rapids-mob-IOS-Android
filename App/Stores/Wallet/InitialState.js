@@ -4,6 +4,7 @@
 export const INITIAL_STATE = {
   walletId: '',
   selectedWallet: {},
+  navigations: {},
   wallets: [],
   walletIsLoading: false,
   walletErrorMessage: null,

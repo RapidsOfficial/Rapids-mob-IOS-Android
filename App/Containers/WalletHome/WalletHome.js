@@ -27,7 +27,7 @@ class WalletHome extends React.Component {
       createTransaction, transactionIsLoading, transactionErrorMessage,
       fetchTransactionFailure, fetchTransactionSuccess
     } = this.props;
-
+    console.log(this.props, '=-=-=-=-=-=-popopopo')
     return (
       <View style={{flex: 1}}>
         {walletIsLoading || transactionIsLoading ? (

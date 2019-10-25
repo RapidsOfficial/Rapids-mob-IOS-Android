@@ -18,5 +18,5 @@ export function* startup() {
   // ...
   
   // When those operations are finished we redirect to the main screen
-  NavigationService.navigateAndReset('WalletHome')
+  NavigationService.navigateAndReset('LeftDrawer')
 }

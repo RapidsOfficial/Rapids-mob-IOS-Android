@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Images } from 'App/Theme'
 
@@ -10,7 +10,7 @@ import Style from './BottomMenuStyle';
  *
  */
 
-const BottomMenu = ({ setScreen, setSelectedPaymentType }) => {
+const BottomMenu = ({ setScreen, setSelectedPaymentType, navigation }) => {
   return (
     <View style={Style.dashboardMenu}>
       <Icon 
@@ -23,7 +23,14 @@ const BottomMenu = ({ setScreen, setSelectedPaymentType }) => {
           setScreen('SelectWallet');
         }} 
       />
-      <Image style={Style.logo} source={Images.menuLogo} resizeMode={'contain'} />
+      <TouchableOpacity style={Style.logo} onPress={() => setScreen('Dashboard')}>
+        <Image 
+          style={Style.logoImage} 
+          source={Images.menuLogo} 
+          resizeMode={'contain'} 
+        />
+      </TouchableOpacity>
+      
       <Icon 
         style={Style.dashboardMenuIcon} 
         name="send" 

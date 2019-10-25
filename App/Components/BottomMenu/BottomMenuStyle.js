@@ -6,7 +6,7 @@ export default StyleSheet.create({
   dashboardMenuIcon: {
     bottom: 0,
     padding: 15,
-    width: '35%',
+    width: '30%',
     textAlign: 'center'
   },
   dashboardMenu: {
@@ -18,8 +18,11 @@ export default StyleSheet.create({
 
   },
   logo: {
-    width: '30%',
-    height: '200%',
-    marginTop: -35
+    width: '40%'    
   },
+  logoImage: {
+    width: '100%',
+    height: '230%',
+    marginTop: -35
+  }
 })

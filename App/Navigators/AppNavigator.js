@@ -17,15 +17,15 @@ const StackNavigator = createStackNavigator(
     SplashScreen: SplashScreen,
     // The main application screen is our "ExampleScreen". Feel free to replace it with your
     // own screen and remove the example.
-    MainScreen: WalletHome,
+    // MainScreen: WalletHome,
 
-    WalletHome: { screen: WalletHome },
-    CreateWallet: { screen: CreateWallet },
-    LeftDrawer: { screen: LeftDrawer }
+    // WalletHome: { screen: WalletHome },
+    // CreateWallet: { screen: CreateWallet },
+    LeftDrawer: { screen: LeftDrawer },
   },
   {
     // By default the application will show the splash screen
-    initialRouteName: 'LeftDrawer',
+    initialRouteName: "LeftDrawer",
     // See https://reactnavigation.org/docs/en/stack-navigator.html#stacknavigatorconfig
     headerMode: 'none',
     swipeEnabled: false

@@ -14,7 +14,9 @@ const { Types, Creators } = createActions({
   // An error occurred
   fetchWalletFailure: ['errorMessage'],
   //reset Wallet
-  resetWallet: null
+  resetWallet: null,
+  //setNavigation
+  setNavigation: ["navigations"]
 });
 
 export const WalletTypes = Types;
