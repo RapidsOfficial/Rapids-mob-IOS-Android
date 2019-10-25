@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 import { Cards } from 'App/Theme';
 import { Buttons } from 'App/Theme';
+import { Images } from 'App/Theme'
 
 import Style from './SelectWalletStyle';
 
@@ -19,18 +20,33 @@ const SelectWallet = ({ wallets, selectWallet, setScreen, selectedPaymentType })
       {wallets.map(walletItem => (
         <Cards 
           key={walletItem.walletName}
+          style={wallet && wallet.walletId == walletItem.walletId? Style.selectedWallet: Style.cardSmall}
           content={
             <View style={Style.cardContent}>
-              <Text>{walletItem.walletName}</Text>
-              <Text>{'0M'}</Text>
-              <Text>{walletItem.addresses[0].address}</Text>
+              <View style={Style.cardCurrentInfoSmall}>
+                <Text style={Style.cardCurrentInfoHeading}>{walletItem.walletName}</Text>
+              </View>
+              <View style={Style.cardRecentInfoSmall}>
+                <View style={Style.cardCurrentInfoBalanceSmall}>
+                  <Image style={Style.cardCurrentInfoBalanceImageSmall} source={Images.newRapidLogoSmall} resizeMode={'contain'}/>
+                  <Text style={Style.cardCurrentInfoBalanceValueSmall}>{`0M`}</Text>
+                </View>
+                <View style={Style.cardCurrentInfoCurrencySmall}>
+                  <Text style={Style.cardCurrentInfoCurrencyValueSmall}>$12.343</Text>
+                  <Text style={Style.cardCurrentInfoCurrencyCodeSmall}>USD</Text>
+                </View>
+              </View>
             </View>
           }
-          onPress={() => setWallet(walletItem)} 
+          onPress={() => {
+            if(!wallet ||  walletItem.walletId !== wallet.walletId)
+              setWallet(walletItem);
+            else
+              setWallet();  
+          }} 
         />
       ))}
       
-
       <View style={Style.createButton}>
         <Buttons 
           text="Select Wallet" 

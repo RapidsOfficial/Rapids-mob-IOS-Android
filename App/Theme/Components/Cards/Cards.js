@@ -15,7 +15,7 @@ export const Cards = (props) => {
     return (
       <TouchableHighlight onPress={onPress} underlayColor="white">
         <View
-          style={Style.card}
+          style={props.style || Style.card}
         >
           {content}
         </View>

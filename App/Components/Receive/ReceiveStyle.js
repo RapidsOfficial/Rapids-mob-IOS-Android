@@ -10,5 +10,9 @@ export default StyleSheet.create({
   cardContent: {
     padding: 10,
     backgroundColor: 'lightblue'
+  },
+  qRCode: {
+    alignItems: 'center'
   }
+
 })

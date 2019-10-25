@@ -12,7 +12,7 @@ import Style from './ReceiveStyle';
  *
  */
 
-const Receive = ({ selectedWallet }) => {
+const Receive = ({ selectedWallet, receiveMoney, setScreen }) => {
   const [ label, setLabel ] = useState('');
   const [ amount, setAmount ] = useState(0);
 
@@ -34,11 +34,19 @@ const Receive = ({ selectedWallet }) => {
         } 
       />
 
-      <Text onPress={copyAddress}>Copy Address</Text>
+      <Buttons text="Copy Address" onPress={copyAddress} />
 
-      <QRCode
-        value={address}
-      />
+      <View style={Style.qRCode}>
+        {!address?
+          <Text>QR Code could not be generated</Text>
+        :
+          <QRCode
+            value={address}
+          />
+        }
+        
+      </View>
+      
 
       <Input 
         label="Label(optional)" 
@@ -53,10 +61,10 @@ const Receive = ({ selectedWallet }) => {
         textColor={"black"}
       />
       <View style={Style.createButton}>
-        <Buttons text="Request Payment" onPress={() => props.receiveMoney(amount, label)} />
+        <Buttons text="Request Payment" onPress={() => receiveMoney(amount, label)} />
       </View>
       <View style={Style.createButton}>
-        <Buttons text="Cancel" onPress={() => props.setScreen('Dashboard')} />
+        <Buttons text="Cancel" onPress={() => setScreen('Dashboard')} />
       </View>
     </View>
   );
