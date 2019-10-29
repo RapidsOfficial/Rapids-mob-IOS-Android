@@ -4,13 +4,13 @@ const { Types, Creators } = createActions({
   // Fetch Address
   fetchAddress: ['addressInfo'],
   //fetch Balance informations
-  fetchBalance: ['balanceInfo'],
+  fetchBalance: ['wallets'],
   // The operation has started and is loading
   fetchBalanceLoading: null,
   // Address informations were successfully fetched
   fetchAddressSuccess: ['address'],
   // Balance informations were successfully fetched
-  fetchBalanceSuccess: ['balance'],
+  fetchBalanceSuccess: ['wallets'],
   // An error occurred
   fetchBalanceFailure: ['errorMessage'],
   // An error occurred

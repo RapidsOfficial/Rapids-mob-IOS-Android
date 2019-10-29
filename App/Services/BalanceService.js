@@ -24,19 +24,31 @@ const balanceApiClient = axios.create({
   timeout: 150000,
 });
 
-function fetchBalance(balanceInfo) {
-  if (!balanceInfo.walletId ) {
+async function fetchBalance(wallets) {
+  if (!wallets || !wallets.length ) {
     return "Address is Required";
   }
-  return balanceApiClient.get(`public/address?walletId=${balanceInfo.walletId}`).then((response) => {
-    if (in200s(response.status)) {
-      return response.data.balance;
-    }
-    return null;
-  })
-  .catch(function (error) {
-    return null;
+  
+  let walletsInfo = wallets.map(async wallet => {
+    let balance = await balanceApiClient.get(`public/address?walletId=${wallet.walletId}`).then((response) => {
+      if (in200s(response.status)) {
+        return response.data.balance;
+      }
+      return 0;
+    })
+    .catch(function (error) {
+      return 0;
+    });
+
+    wallet['balance'] = balance;
+    return wallet;
   });
+  
+  Promise.all(walletsInfo).then(function(results) {
+    wallets = results;
+  })
+
+  return wallets;
 }
 
 async function fetchAddress(transactionInfo) {

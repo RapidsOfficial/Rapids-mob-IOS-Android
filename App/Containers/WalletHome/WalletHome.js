@@ -27,7 +27,7 @@ class WalletHome extends React.Component {
       createTransaction, transactionIsLoading, transactionErrorMessage,
       fetchTransactionFailure, fetchTransactionSuccess
     } = this.props;
-    console.log(this.props, '=-=-=-=-=-=-popopopo')
+
     return (
       <View style={{flex: 1}}>
         {walletIsLoading || transactionIsLoading ? (
@@ -89,7 +89,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   selectWallet: (selectedWallet) => dispatch(WalletActions.selectWallet(selectedWallet)),
   fetchWalletFailure: () => dispatch(WalletActions.fetchWalletFailure()),
-  fetchBalance: (balanceInfo) => dispatch(BalanceActions.fetchBalance(balanceInfo)),
+  fetchBalance: (wallets) => dispatch(BalanceActions.fetchBalance(wallets)),
   createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo)),
   fetchTransactionFailure: (errorMessage) => dispatch(TransactionAction.fetchTransactionFailure(errorMessage)),
   fetchTransactionSuccess: (transaction) => dispatch(TransactionAction.fetchTransactionSuccess(transaction))

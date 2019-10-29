@@ -14,9 +14,9 @@ export const fetchBalanceLoading = (state) => ({
   errorMessage: null,
 });
 
-export const fetchBalanceSuccess = (state, { balance }) => ({
+export const fetchBalanceSuccess = (state, { wallets }) => ({
   ...state,
-  balance: balance,
+  wallets: wallets,
   balanceIsLoading: false,
   errorMessage: null,
 });

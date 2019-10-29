@@ -1,5 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import BalanceActions from 'App/Stores/Balance/Actions'
+import WalletActions from 'App/Stores/Wallet/Actions'
 import { balanceService } from 'App/Services/BalanceService'
 
 /**
@@ -13,10 +14,12 @@ export function* fetchBalance(action) {
   yield put(BalanceActions.fetchBalanceLoading());
 
   // Fetch balance informations from an API
-  const balance = yield call(balanceService.fetchBalance, action.balanceInfo);
+  const wallets = yield call(balanceService.fetchBalance, action.wallets);
 
-  if (balance && balance.address) {
-    yield put(BalanceActions.fetchBalanceSuccess(balance));
+  if (wallets && wallets.length) {
+    yield put(BalanceActions.fetchBalanceSuccess(wallets));
+    yield put(WalletActions.selectWallet(wallets && wallets.length ? wallets[0] : {} ));
+
   } else {
     yield put(
       BalanceActions.fetchBalanceFailure('There was an error while fetching balance.')

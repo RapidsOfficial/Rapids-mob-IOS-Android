@@ -8,62 +8,73 @@ import { Header, BottomMenu, Home, Send, Receive, SelectWallet } from 'App/Compo
  *
  */
 
-const Dashboard = (props) => {
+const Dashboard = ({
+  wallets,
+  transaction,
+  selectedWallet,
+  transactionErrorMessage,
+  navigation,
+  selectWallet,
+  createTransaction,
+  fetchBalance,
+  fetchTransactionFailure
+}) => {
   const [ screen, setScreen ] = useState('Dashboard');
   const [ selectedPaymentType, setSelectedPaymentType ] = useState('');
-
-  let balance = Object.keys(props.balance).length ? props.balance.balance : 0;
   
   useEffect(() => {
-    if(props.wallets && props.wallets.length && props.wallets[0].walletId)
-      props.fetchBalance({walletId: props.wallets[0].walletId});
-  }, [props.wallets]);
+    if(wallets && wallets.length && wallets[0].walletId)
+      fetchBalance(wallets);
+  }, [wallets]);
 
   renderScreen = () => {
     switch(screen) {
       case 'Dashboard':
-        return <Home balance={balance} />;
+        return <Home 
+          wallets={wallets} 
+          selectedWallet={selectedWallet}
+          selectWallet={selectWallet}
+        />;
       case 'SelectWallet':
         return <SelectWallet 
           selectedPaymentType={selectedPaymentType}
           setScreen={setScreen}
-          wallets={props.wallets}
-          selectWallet={props.selectWallet}
+          wallets={wallets}
+          selectWallet={selectWallet}
         />
       case 'Receive':
         return <Receive 
-          balance={balance} 
+          selectedWallet={selectedWallet} 
           setScreen={setScreen} 
-          {...props} 
         />;
       case 'Send':
         return <Send 
           setScreen={setScreen}
-          selectedWallet={props.selectedWallet} 
-          createTransaction={props.createTransaction} 
+          selectedWallet={selectedWallet} 
+          createTransaction={createTransaction} 
         />; 
     } 
   };
 
-  if(props.transactionErrorMessage) {
-    if(props.selectedWallet && Object.keys(props.selectedWallet).length && props.selectedWallet[0].walletId)
-      props.fetchBalance({walletId: props.selectedWallet[0].walletId});
+  if(transactionErrorMessage) {
+    if(selectedWallet && Object.keys(selectedWallet).length && selectedWallet[0].walletId)
+      fetchBalance(wallets);
     Alert.alert(
       'Error',
-      JSON.stringify(props.transactionErrorMessage),
+      JSON.stringify(transactionErrorMessage),
       [
-        {text: 'OK', onPress: () => props.fetchTransactionFailure(false)},
+        {text: 'OK', onPress: () => fetchTransactionFailure(false)},
       ],
       {cancelable: false},
     );
   }
 
-  if(props.transaction) {
+  if(transaction) {
     Alert.alert(
       'Transaction Success',
-      JSON.stringify(props.transaction),
+      JSON.stringify(transaction),
       [
-        {text: 'OK', onPress: () => props.fetchTransactionSuccess(false)},
+        {text: 'OK', onPress: () => fetchTransactionSuccess(false)},
       ],
       {cancelable: false},
     );
@@ -71,9 +82,13 @@ const Dashboard = (props) => {
   
   return (
     <View style={Style.container}>
-      <Header {...props} />
+      <Header navigation={navigation} />
       {renderScreen()}
-      <BottomMenu setSelectedPaymentType={setSelectedPaymentType} setScreen={setScreen} {...props} />
+      <BottomMenu 
+        setSelectedPaymentType={setSelectedPaymentType} 
+        setScreen={setScreen} 
+        navigation={navigation}
+      />
     </View>
   );
 }

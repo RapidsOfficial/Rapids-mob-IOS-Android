@@ -4,15 +4,19 @@ import ApplicationStyles from 'App/Theme/ApplicationStyles'
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 20,
-    flex: 1
+    paddingTop: 50,
+    flex: 1,
+    backgroundColor: '#292C34'
   },
   navItemStyle: {
-    padding: 10
+    padding: 15,
+    paddingLeft: 30,
+    fontSize: 16,
+    color: 'white'
   },
-  navSectionStyle: {
-    backgroundColor: 'lightgrey'
-  },
+  // navSectionStyle: {
+  //   underlayColor: 'red'
+  // },
   sectionHeadingStyle: {
     paddingVertical: 10,
     paddingHorizontal: 5
