@@ -6,65 +6,74 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     flex: 1,
     width: '100%',
-    padding: 12
+    padding: 12,
+    alignItems: 'center'
+  },
+  selectWalletScreenTitle: {
+    fontSize: 14,
+    fontWeight: '300',
+    paddingVertical: 10,
+    letterSpacing: 2
   },
   cardContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 15
+    marginHorizontal: 15,
+    height: 100,
   },
+
   selectedWallet: {
-    height: 95,
-    width: width - 25,
+    height: 120,
+    width: width - 15,
     justifyContent: 'center',
-    backgroundColor: '#50C0D2',
-    borderRadius: 10,
+    borderRadius: 4,
     marginTop: 10,
     marginBottom: 10,
     borderColor: 'black',
     borderWidth: 1,
   },
   cardSmall: {
-    height: 95,
-    width: width - 25,
+    height: 120,
+    width: width - 15,
     justifyContent: 'center',
-    backgroundColor: '#50C0D2',
-    borderRadius: 10,
+    borderRadius: 4,
+    borderColor: 'lightgray',
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    borderWidth: 1,
+  },
+  cardImage: {
+    width: '8%',
+    height: 60
   },
   cardCurrentInfoSmall: {
-    marginVertical: 19,
-    width: '50%'
+    margin: 15,
+    width: '80%'
+  },
+  cardCurrentInfoHeading: {
+    fontSize: 20,
+    fontWeight: '400',
+    letterSpacing: 1
+  },
+  cardCurrentInfoBalanceValueSmall: {
+    fontSize: 20,
+    paddingBottom: 10
+  },
+  cardCurrentInfoCurrencyValueSmall: {
+    fontSize: 12,
+    letterSpacing: 1,
+    fontWeight: '300'
   },
 
-
   cardRecentInfoSmall: {
-    marginVertical: 10,
-    alignItems: 'flex-end'
+    marginVertical: 35,
   },
   cardCurrentInfoBalanceSmall: {
     flexDirection: 'row'
   },
   cardCurrentInfoBalanceImageSmall: {
-    width: '30%',
-    height: 18,
-    marginVertical: 3
+    width: '100%',
+    height: 30
   },
-  cardCurrentInfoBalanceValueSmall: {
-    fontSize: 20,
-    color: 'white'
-  },
-  cardCurrentInfoCurrencySmall: {
-    flexDirection: 'row'
-  },
-  cardCurrentInfoCurrencyValueSmall: {
-    fontSize: 12,
-    color: 'white',
-    paddingRight: 5
-  },
-  cardCurrentInfoCurrencyCodeSmall: {
-    color: 'black',
-    fontSize: 12
-  }
+
 })

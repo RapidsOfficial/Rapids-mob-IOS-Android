@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image } from 'react-native';
 import { Cards } from 'App/Theme';
-import Style from './HomeStyle';
+import Style from './WalletPageStyle';
 import { Images } from 'App/Theme'
 import axios from 'axios';
 /**
@@ -21,7 +21,7 @@ const currencyConvertor = async (amount, currency) => {
   });
 };
 
-const Home = ({ wallets, selectedWallet }) => {
+const WalletPage = ({ wallets, selectedWallet }) => {
   const [ totalBTC, setTotalBTC ] = useState(0);
   const [ totalUSD, setTotalUSD ] = useState(0);
   const [ selectedBTC, setSelectedBTC ] = useState(0);
@@ -52,7 +52,7 @@ const Home = ({ wallets, selectedWallet }) => {
   }
 
   return (
-    <View style={Style.homeScreen}>
+    <View style={Style.walletPageScreen}>
       
       <View style={Style.headerInfo}>
         <View style={Style.totalBalance}>
@@ -127,7 +127,7 @@ const Home = ({ wallets, selectedWallet }) => {
   );
 }
 
-Home.propTypes = {
+WalletPage.propTypes = {
 }
 
-export default Home;
+export default WalletPage;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image } from 'react-native';
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Cards } from 'App/Theme';
 import { Buttons } from 'App/Theme';
 import { Images } from 'App/Theme'
@@ -13,49 +13,36 @@ import Style from './SelectWalletStyle';
  */
 
 const SelectWallet = ({ wallets, selectWallet, setScreen, selectedPaymentType }) => {
-  const [ wallet, setWallet ] = useState({});
-
   return (
     <View style={Style.selectWalletScreen}>
+      <Text style={Style.selectWalletScreenTitle}>TO ADDRESS</Text>
       {wallets.map(walletItem => (
         <Cards 
           key={walletItem.walletName}
-          style={wallet && wallet.walletId == walletItem.walletId? Style.selectedWallet: Style.cardSmall}
+          style={Style.cardSmall}
           content={
             <View style={Style.cardContent}>
+              <Image 
+                style={Style.cardImage} 
+                source={Images.walletIcon} 
+                resizeMode={'contain'} 
+              />
               <View style={Style.cardCurrentInfoSmall}>
-                <Text style={Style.cardCurrentInfoHeading}>{walletItem.walletName}</Text>
+                <Text style={Style.cardCurrentInfoHeading}>{walletItem.walletName.split('-').pop()}</Text>
+                <Text style={Style.cardCurrentInfoBalanceValueSmall}>{walletItem.balance && walletItem.balance.balance ? walletItem.balance.balance: 0}</Text>
+                <Text style={Style.cardCurrentInfoCurrencyValueSmall}>{walletItem.addresses && walletItem.addresses.length ? walletItem.addresses[0].address: '' }</Text>
               </View>
               <View style={Style.cardRecentInfoSmall}>
-                <View style={Style.cardCurrentInfoBalanceSmall}>
-                  <Image style={Style.cardCurrentInfoBalanceImageSmall} source={Images.newRapidLogoSmall} resizeMode={'contain'}/>
-                  <Text style={Style.cardCurrentInfoBalanceValueSmall}>{`0M`}</Text>
-                </View>
-                <View style={Style.cardCurrentInfoCurrencySmall}>
-                  <Text style={Style.cardCurrentInfoCurrencyValueSmall}>$12.343</Text>
-                  <Text style={Style.cardCurrentInfoCurrencyCodeSmall}>USD</Text>
-                </View>
+                <Icon style={Style.cardCurrentInfoBalanceImageSmall} name="keyboard-arrow-right" size={30} color="#51B04D" onPress={() => navigation.openDrawer()} />
               </View>
             </View>
           }
           onPress={() => {
-            if(!wallet ||  walletItem.walletId !== wallet.walletId)
-              setWallet(walletItem);
-            else
-              setWallet();  
+            selectWallet(walletItem);
+            setScreen(selectedPaymentType);  
           }} 
         />
       ))}
-      
-      <View style={Style.createButton}>
-        <Buttons 
-          text="Select Wallet" 
-          onPress={() => {
-            selectWallet(wallet);
-            setScreen(selectedPaymentType);
-          }} 
-        />
-      </View>
     </View>
   );
 }

@@ -21,9 +21,10 @@ const Dashboard = ({
 }) => {
   const [ screen, setScreen ] = useState('Dashboard');
   const [ selectedPaymentType, setSelectedPaymentType ] = useState('');
-  
+  const [ transactionModal, setTransactionModal ] = useState('');
+
   useEffect(() => {
-    if(wallets && wallets.length && wallets[0].walletId)
+    if(wallets && wallets.length)
       fetchBalance(wallets);
   }, [wallets]);
 
@@ -31,7 +32,8 @@ const Dashboard = ({
     switch(screen) {
       case 'Dashboard':
         return <Home 
-          wallets={wallets} 
+          wallets={wallets}
+          transactionModal={transactionModal} 
           selectedWallet={selectedWallet}
           selectWallet={selectWallet}
         />;
@@ -85,6 +87,8 @@ const Dashboard = ({
       <Header navigation={navigation} />
       {renderScreen()}
       <BottomMenu 
+        transactionModal={transactionModal}
+        setTransactionModal={setTransactionModal}
         setSelectedPaymentType={setSelectedPaymentType} 
         setScreen={setScreen} 
         navigation={navigation}
