@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 rootProject.name = 'wallet'
+=======
+rootProject.name = 'rapidsnetwork'
+>>>>>>> d2d4440003e5500ff64ecfff80ab5229082ed2dd
 include ':react-native-svg'
 project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-svg/android')
 include ':@react-native-community_async-storage'

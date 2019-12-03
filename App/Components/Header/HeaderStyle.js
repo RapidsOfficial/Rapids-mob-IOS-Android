@@ -8,7 +8,7 @@ export default StyleSheet.create({
     padding: 20
   },
   walletNavigator: {
-    marginBottom: 20,
+    // marginBottom: 20,
     flex: 0.1,
     justifyContent: 'space-between',
     flexDirection: 'row'
@@ -18,4 +18,22 @@ export default StyleSheet.create({
     height: '70%',
     margin: 12
   },
+  logoText: {
+    width: '50%',
+    height: '70%',
+    margin: 12,
+    color: 'white',    
+    padding: 12,
+    letterSpacing: 1.5,
+    flex: 1,
+    fontSize: 16,
+    paddingRight: 0,
+    textAlign: 'right'
+  },
+  walletNavImage: {
+    top: 0,
+    padding: 20,    
+    width: '10%',
+    margin: 12,
+  }
 })

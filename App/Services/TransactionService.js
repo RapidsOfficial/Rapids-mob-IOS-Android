@@ -37,11 +37,11 @@ function createTransaction(transactionInfo) {
       return response.data.returnData;
     }
 
-    return null;
+    return { error: response };
   })
   .catch(function (error) {
     // handle error
-    return null;
+    return { error: error };
   });;
 }
 

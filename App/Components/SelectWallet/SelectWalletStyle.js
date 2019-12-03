@@ -15,12 +15,6 @@ export default StyleSheet.create({
     paddingVertical: 10,
     letterSpacing: 2
   },
-  cardContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 15,
-    height: 100,
-  },
 
   selectedWallet: {
     height: 120,
@@ -41,6 +35,12 @@ export default StyleSheet.create({
     marginTop: 10,
     marginBottom: 10,
     borderWidth: 1,
+  },
+  cardContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 15,
+    height: 100,
   },
   cardImage: {
     width: '8%',

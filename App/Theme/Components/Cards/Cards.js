@@ -8,12 +8,13 @@ import Style from './CardsStyle';
 export const Cards = (props) => {
     const { 
       style,
-      onPress,
-      content
+      cardAction,
+      content,
+      cardKey
     } = props;
-
+    
     return (
-      <TouchableHighlight onPress={onPress} underlayColor="white">
+      <TouchableHighlight onPress={cardAction} underlayColor="white" key={cardKey}>
         <View
           style={props.style || Style.card}
         >
@@ -24,6 +25,8 @@ export const Cards = (props) => {
 };
 
 Cards.propTypes = {
-  onPress: PropTypes.func,
-  style: PropTypes.object
+  cardAction: PropTypes.func,
+  style: PropTypes.object,
+  content: PropTypes.object,
+  cardKey: PropTypes.number
 };

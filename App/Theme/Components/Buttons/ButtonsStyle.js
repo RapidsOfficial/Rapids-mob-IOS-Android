@@ -5,10 +5,12 @@ const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
   container: {
-    height: 50,
+    height: 55,
     width: width - 25,
     justifyContent: 'center',
-    backgroundColor: '#51B04D',
+    backgroundColor: '#72F586',
+    borderColor: '#72F586',
+    borderWidth: 1,
     borderRadius: 6,
     marginTop: 10,
     marginBottom: 10
@@ -18,7 +20,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontWeight: '800',
+    fontSize: 16,
     letterSpacing: 3,
-    fontSize: Fonts.size.small
+    // fontSize: Fonts.size.small
   }
 })

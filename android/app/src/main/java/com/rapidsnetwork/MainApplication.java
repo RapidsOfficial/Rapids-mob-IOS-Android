@@ -1,4 +1,4 @@
-package com.wallet;
+package com.rapidsnetwork;
 
 import android.app.Application;
 

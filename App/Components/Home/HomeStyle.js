@@ -1,16 +1,27 @@
 import { StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
+const cardCommonStyle ={
+  height: 95,
+  width: width - 25,
+  justifyContent: 'center',
+  borderRadius: 10,
+  marginTop: 10,
+  marginBottom: -25
+};
+
 export default StyleSheet.create({
   homeScreen: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   headerInfo: {
     justifyContent: 'space-between',
     flexDirection: 'row',
     paddingLeft: 20,
     paddingRight: 20,
-    paddingBottom: 20
+    paddingBottom: 20,
+    width: '100%'
   },
   totalBalance: {
     alignItems: 'center'
@@ -99,33 +110,40 @@ export default StyleSheet.create({
   stackView: {
 
   },
+  
   cardSmall1: {
-    height: 95,
-    width: width - 25,
-    justifyContent: 'center',
-    backgroundColor: '#1F4F30',
-    borderRadius: 10,
-    marginTop: 10,
-    marginBottom: -25
+    ...cardCommonStyle,
+    backgroundColor: '#1F4F30'
   },
   cardSmall2: {
-    height: 95,
-    width: width - 25,
-    justifyContent: 'center',
-    backgroundColor: '#4DAA60',
-    borderRadius: 10,
-    marginTop: 10,
-    marginBottom: -25
+    ...cardCommonStyle,
+    backgroundColor: '#4DAA60'
   },
   cardSmall3: {
-    height: 95,
-    width: width - 25,
-    justifyContent: 'center',
-    backgroundColor: '#52C1C9',
-    borderRadius: 10,
-    marginTop: 10,
-    marginBottom: -25
+    ...cardCommonStyle,
+    backgroundColor: '#52C1C9'
   },
+  cardSmall4: {
+    ...cardCommonStyle,
+    backgroundColor: '#439970'
+  },
+  cardSmall5: {
+    ...cardCommonStyle,
+    backgroundColor: '#5FCC42'
+  },
+  cardSmall6: {
+    ...cardCommonStyle,
+    backgroundColor: '#F1843B'
+  },
+  cardSmall7: {
+    ...cardCommonStyle,
+    backgroundColor: '#B344CA'
+  },
+  cardSmall8: {
+    ...cardCommonStyle,
+    backgroundColor: '#80DBFA'
+  },
+
   cardCurrentInfoSmall: {
     marginVertical: 19
   },

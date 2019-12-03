@@ -53,7 +53,6 @@ const WalletPage = ({ wallets, selectedWallet }) => {
 
   return (
     <View style={Style.walletPageScreen}>
-      
       <View style={Style.headerInfo}>
         <View style={Style.totalBalance}>
           <Text style={Style.totalBalanceText}>{totalBalance}</Text>

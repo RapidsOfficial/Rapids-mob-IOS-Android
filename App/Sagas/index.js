@@ -4,7 +4,7 @@ import { TransactionTypes } from 'App/Stores/Transaction/Actions'
 import { BalanceTypes } from 'App/Stores/Balance/Actions'
 
 import { StartupTypes } from 'App/Stores/Startup/Actions'
-import { createWallet, fetchWallet } from './WalletSaga'
+import { createWallet, fetchWallet, createBackup } from './WalletSaga'
 import { createTransaction, fetchTransaction, fetchTransactions } from './TransactionSaga'
 import { fetchBalance, fetchAddress } from './BalanceSaga'
 import { startup } from './StartupSaga'
@@ -23,6 +23,8 @@ export default function* root() {
     takeLatest(WalletTypes.CREATE_WALLET, createWallet),
 
     takeLatest(WalletTypes.FETCH_WALLET, fetchWallet),
+
+    takeLatest(WalletTypes.CREATE_BACKUP, createBackup),
 
 
     //TRANSACTIONS

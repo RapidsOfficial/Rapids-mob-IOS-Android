@@ -32,7 +32,6 @@ export const selectWallet = (state, { selectedWallet }) => ({
 export const fetchWalletFailure = (state, { errorMessage }) => ({
   ...state,
   walletId: '',
-  wallet: {},
   walletIsLoading: false,
   walletErrorMessage: errorMessage,
 })

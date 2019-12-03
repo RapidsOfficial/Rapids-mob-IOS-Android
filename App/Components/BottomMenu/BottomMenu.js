@@ -15,8 +15,8 @@ const BottomMenu = ({ setScreen, setSelectedPaymentType, setTransactionModal, tr
   
   const modalAction = (type) => {
     setTransactionModal(!transactionModal);
-    setSelectedPaymentType('Receive');
-    setScreen('SelectWallet');
+    setSelectedPaymentType(type);
+    setScreen('SelectWallet', 'Dashboard');
   };
 
   return (
@@ -87,7 +87,7 @@ const BottomMenu = ({ setScreen, setSelectedPaymentType, setTransactionModal, tr
         <View style={Style.dashboardMenu}>
           <TouchableOpacity 
             style={Style.dashboardMenuIcon} 
-            onPress={() => setScreen('Dashboard')}>
+            onPress={() => setScreen('Dashboard', 'Dashboard')}>
             <Image 
               style={Style.dashboardMenuIconImage} 
               source={Images.walletBottom} 
@@ -105,7 +105,7 @@ const BottomMenu = ({ setScreen, setSelectedPaymentType, setTransactionModal, tr
           
           <TouchableOpacity 
             style={Style.dashboardMenuIcon} 
-            onPress={() => setScreen('Dashboard')}>
+            onPress={() => setScreen('AllTransactions', 'Dashboard')}>
             <Image 
               style={Style.dashboardMenuIconImage} 
               source={Images.checkBottom} 

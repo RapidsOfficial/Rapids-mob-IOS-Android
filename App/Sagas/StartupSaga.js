@@ -2,7 +2,11 @@ import { put } from 'redux-saga/effects'
 import WalletActions from 'App/Stores/Wallet/Actions'
 import TransactionActions from 'App/Stores/Transaction/Actions'
 import BalanceActions from 'App/Stores/Balance/Actions'
+import * as Sentry from '@sentry/react-native';
 
+Sentry.init({ 
+  dsn: 'https://f8f652cfb5594f4182d4478b4ac23c34@sentry.io/1805594', 
+});
 import NavigationService from 'App/Services/NavigationService'
 
 /**

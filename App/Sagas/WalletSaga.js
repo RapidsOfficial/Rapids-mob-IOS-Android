@@ -14,15 +14,27 @@ export function* createWallet(action) {
   yield put(WalletActions.fetchWalletLoading());
 
   // Fetch wallet informations from an API
-  const wallets = yield call(walletService.createWallet, action.walletInfo);
+  const response = yield call(walletService.createWallet, action.walletInfo);
+  const wallets = response.wallets;
 
   if (wallets && wallets.length) {
     yield put(WalletActions.fetchWalletSuccess(wallets));
-    NavigationService.navigate('WalletHome');
+   
+    if(!response.data.backupId) {
+      let data = response.data;
+      yield put(WalletActions.selectWallet(data));
+      NavigationService.navigate('CreateWallet', {
+        componentToBeRendered: "Mnemonic"
+      });
+    } else {
+      NavigationService.navigate('WalletHome');
+    }
+
   } else {
     yield put(
       WalletActions.fetchWalletFailure('There was an error while creating wallet.')
     );
+    throw new Error(wallets);
   }
 }
 
@@ -44,5 +56,26 @@ export function* fetchWallet(action) {
   }
 
   // Fetch wallet informations from an API
+
+}
+
+
+export function* createBackup(action) {
+  // Dispatch a redux action using `put()`
+  // @see https://redux-saga.js.org/docs/basics/DispatchingActions.html
+  yield put(WalletActions.fetchWalletLoading());
+
+  // Fetch wallet informations from an API
+  const wallets = yield call(walletService.createBackup, action.backupInfo);
+
+  if (wallets && wallets.length) {
+    yield put(WalletActions.fetchWalletSuccess(wallets));
+    NavigationService.navigate('WalletHome');
+  } else {
+    yield put(
+      WalletActions.fetchWalletFailure('There was an error while creating wallet.')
+    );
+    throw new Error(wallets)
+  }
 
 }

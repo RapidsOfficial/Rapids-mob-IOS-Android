@@ -18,7 +18,7 @@ const SelectWallet = ({ wallets, selectWallet, setScreen, selectedPaymentType })
       <Text style={Style.selectWalletScreenTitle}>TO ADDRESS</Text>
       {wallets.map(walletItem => (
         <Cards 
-          key={walletItem.walletName}
+          key={walletItem.id}
           style={Style.cardSmall}
           content={
             <View style={Style.cardContent}>
@@ -28,18 +28,18 @@ const SelectWallet = ({ wallets, selectWallet, setScreen, selectedPaymentType })
                 resizeMode={'contain'} 
               />
               <View style={Style.cardCurrentInfoSmall}>
-                <Text style={Style.cardCurrentInfoHeading}>{walletItem.walletName.split('-').pop()}</Text>
+                <Text style={Style.cardCurrentInfoHeading}>{walletItem.walletId.split('-').pop()}</Text>
                 <Text style={Style.cardCurrentInfoBalanceValueSmall}>{walletItem.balance && walletItem.balance.balance ? walletItem.balance.balance: 0}</Text>
                 <Text style={Style.cardCurrentInfoCurrencyValueSmall}>{walletItem.addresses && walletItem.addresses.length ? walletItem.addresses[0].address: '' }</Text>
               </View>
               <View style={Style.cardRecentInfoSmall}>
-                <Icon style={Style.cardCurrentInfoBalanceImageSmall} name="keyboard-arrow-right" size={30} color="#51B04D" onPress={() => navigation.openDrawer()} />
+                <Icon style={Style.cardCurrentInfoBalanceImageSmall} name="keyboard-arrow-right" size={30} color="#72F586"/>
               </View>
             </View>
           }
-          onPress={() => {
+          cardAction={() => {
             selectWallet(walletItem);
-            setScreen(selectedPaymentType);  
+            setScreen(selectedPaymentType, 'Dashboard');  
           }} 
         />
       ))}

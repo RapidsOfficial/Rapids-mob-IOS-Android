@@ -31,23 +31,24 @@ async function fetchBalance(wallets) {
   
   let walletsInfo = wallets.map(async wallet => {
     let balance = await balanceApiClient.get(`public/address?walletId=${wallet.walletId}`).then((response) => {
+
       if (in200s(response.status)) {
         return response.data.balance;
       }
-      return 0;
+      throw new Error(response);
     })
     .catch(function (error) {
-      return 0;
+      throw new Error(error);
     });
 
     wallet['balance'] = balance;
     return wallet;
   });
   
-  Promise.all(walletsInfo).then(function(results) {
+  await Promise.all(walletsInfo).then(function(results) {
     wallets = results;
-  })
-
+  });
+  
   return wallets;
 }
 
@@ -61,6 +62,7 @@ async function fetchAddress(transactionInfo) {
       return response.data;
     }
 
+    throw new Error(response);
     return null;
   });
 }

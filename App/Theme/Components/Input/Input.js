@@ -5,65 +5,72 @@ import { TextField } from 'react-native-material-textfield';
 import Style from './InputStyle';
 
 export const Input = (props) => {
-    const { 
-        inputRef,
-        value,
-        title,
-        secureTextEntry,
-        clearTextOnFocus,
-        defaultValue,
-        keyboardType,
-        autoCapitalize,
-        autoCorrect,
-        enablesReturnKeyAutomatically,
-        onFocus,
-        onChangeText,
-        onSubmitEditing,
-        returnKeyType,
-        label,
-        multiline,
-        blurOnSubmit,
-        characterRestriction,
-        maxLength,
-        renderRightAccessory,
-        error,
-        disabled  
-    } = props;
+  const { 
+    inputRef,
+    value,
+    title,
+    secureTextEntry,
+    clearTextOnFocus,
+    defaultValue,
+    keyboardType,
+    autoCapitalize,
+    autoCorrect,
+    enablesReturnKeyAutomatically,
+    onFocus,
+    onChangeText,
+    onSubmitEditing,
+    returnKeyType,
+    label,
+    multiline,
+    blurOnSubmit,
+    characterRestriction,
+    maxLength,
+    renderRightAccessory,
+    error,
+    disabled,
+    labelTextStyle,
+    inlineImageLeft,
+    baseColor,
+    tintColor
+  } = props;
 
-    return (
-      <TextField 
-        ref={inputRef}
-        value={value}
-        title={title}
-        secureTextEntry={secureTextEntry}
-        clearTextOnFocus={clearTextOnFocus}
-        defaultValue={defaultValue}
-        keyboardType={keyboardType}
-        autoCapitalize={autoCapitalize}
-        autoCorrect={autoCorrect}
-        enablesReturnKeyAutomatically={enablesReturnKeyAutomatically}
-        onFocus={onFocus}
-        onChangeText={onChangeText}
-        onSubmitEditing={onSubmitEditing}
-        returnKeyType={returnKeyType}
-        label={label}
-        multiline={multiline}
-        blurOnSubmit={blurOnSubmit}
-        characterRestriction={characterRestriction}
-        maxLength={maxLength}
-        renderRightAccessory={renderRightAccessory}
-        error={error}
-        disabled={disabled}
-        inputContainerStyle={Style.inputContainerStyle}
-        containerStyle={Style.containerStyle}
-        labelTextStyle={Style.labelTextStyle}
-        titleTextStyle={Style.titleTextStyle}
-        affixTextStyle={Style.affixTextStyle} 
-        lineWidth={0}    
-        activeLineWidth={0}
-        textColor={props.textColor || "white"} 
-      />
-    );
+  return (
+    <TextField 
+      ref={inputRef}
+      value={value}
+      title={title}
+      secureTextEntry={secureTextEntry}
+      clearTextOnFocus={clearTextOnFocus}
+      defaultValue={defaultValue}
+      keyboardType={keyboardType}
+      autoCapitalize={autoCapitalize}
+      autoCorrect={autoCorrect}
+      enablesReturnKeyAutomatically={enablesReturnKeyAutomatically}
+      onFocus={onFocus}
+      onChangeText={onChangeText}
+      onSubmitEditing={onSubmitEditing}
+      returnKeyType={returnKeyType}
+      label={label}
+      multiline={multiline}
+      blurOnSubmit={blurOnSubmit}
+      characterRestriction={characterRestriction}
+      maxLength={maxLength}
+      renderRightAccessory={renderRightAccessory}
+      error={error}
+      disabled={disabled}
+      inputContainerStyle={error ? Style.inputContainerErrorStyle : Style.inputContainerStyle}
+      containerStyle={Style.containerStyle}
+      labelTextStyle={labelTextStyle || Style.labelTextStyle}
+      titleTextStyle={Style.titleTextStyle}
+      affixTextStyle={Style.affixTextStyle} 
+      lineWidth={0}    
+      activeLineWidth={0}
+      baseColor={baseColor}
+      tintColor={tintColor}
+      inlineImageLeft={inlineImageLeft}
+      textColor={props.textColor || "white"} 
+    />
+  );
 };
 
 Input.propTypes = {

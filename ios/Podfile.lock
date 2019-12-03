@@ -219,11 +219,23 @@ PODS:
     - React-cxxreact (= 0.61.2)
     - React-jsi (= 0.61.2)
     - ReactCommon/jscallinvoker (= 0.61.2)
-  - RNGestureHandler (1.4.1):
+  - RNFS (2.16.2):
     - React
-  - RNSVG (9.12.0):
+  - RNGestureHandler (1.5.1):
+    - React
+  - RNKeychain (3.1.3):
+    - React
+  - RNSentry (1.1.0):
+    - React
+    - Sentry (~> 4.4.0)
+  - RNSVG (9.13.3):
     - React
   - RNVectorIcons (6.6.0):
+    - React
+  - Sentry (4.4.1):
+    - Sentry/Core (= 4.4.1)
+  - Sentry/Core (4.4.1)
+  - TouchID (4.4.1):
     - React
   - Yoga (1.14.0)
 
@@ -256,14 +268,19 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNKeychain (from `../node_modules/react-native-keychain`)
+  - "RNSentry (from `../node_modules/@sentry/react-native`)"
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - TouchID (from `../node_modules/react-native-touch-id`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - Sentry
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -316,12 +333,20 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNKeychain:
+    :path: "../node_modules/react-native-keychain"
+  RNSentry:
+    :path: "../node_modules/@sentry/react-native"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  TouchID:
+    :path: "../node_modules/react-native-touch-id"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -352,11 +377,16 @@ SPEC CHECKSUMS:
   React-RCTText: e3ef6191cdb627855ff7fe8fa0c1e14094967fb8
   React-RCTVibration: fb54c732fd20405a76598e431aa2f8c2bf527de9
   ReactCommon: 5848032ed2f274fcb40f6b9ec24067787c42d479
-  RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
-  RNSVG: 75670614bca635d3dd64bc267bc199e539cb4fa9
+  RNFS: 0d4191b1052bef9ce70deff00a5b4169c62bbd9b
+  RNGestureHandler: 7add966bb5d90ee8cf38d4341f87814474357972
+  RNKeychain: c658833a9cb2cbcba6423bdd6e16cce59e27da0e
+  RNSentry: 932ac1c8b2f581b1c8be5812f88ff556c99e7fb7
+  RNSVG: f6177f8d7c095fada7cfee2e4bb7388ba426064c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  Sentry: 5d312a04e369154aeac616214f4dfc3cbcc8b296
+  TouchID: ba4c656d849cceabc2e4eef722dea5e55959ecf4
   Yoga: 14927e37bd25376d216b150ab2a561773d57911f
 
-PODFILE CHECKSUM: 7db1f53df894e5d07390ea87a1127c690bbb9369
+PODFILE CHECKSUM: b83cca9915fbdb031ff4b8148e81f318a28cd2c3
 
 COCOAPODS: 1.8.4

@@ -1,4 +1,4 @@
-package com.wallet;
+package com.rapidsnetwork;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "wallet";
+        return "rapidsnetwork";
     }
 
     @Override

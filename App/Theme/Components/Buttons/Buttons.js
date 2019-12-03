@@ -16,7 +16,9 @@ export const Buttons = (props) => {
       upperCase,
       icon,
       iconSet,
-      disabled
+      disabled,
+      containerStyle,
+      textStyle
     } = props;
 
     return (
@@ -32,8 +34,8 @@ export const Buttons = (props) => {
         iconSet={iconSet}
         disabled={disabled}
         style={{
-          container: Style.container,
-          text: Style.text,
+          container: containerStyle || Style.container,
+          text: textStyle || Style.text,
         }}
       />
     );

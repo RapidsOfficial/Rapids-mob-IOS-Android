@@ -30,17 +30,16 @@ function createWallet(walletInfo) {
   }
 
   return walletApiClient.post('public/wallet', { walletName: walletInfo.walletName }).then((response) => {
-    if (in200s(response.status)) {
-      let wallets = walletInfo.wallets;
+    if (in200s(response.status) && response.data && response.data.walletUser) {
+      let wallets = walletInfo.wallets;      
       wallets.push(response.data.walletUser);
-      return wallets;
+      return { wallets: wallets, data: response.data.walletUser };
     }
-
-    return null;
+    
+    return { error: response };
   })
   .catch((error) => {
-    console.log(error)
-    return null;
+    return error;
   });
 }
 
@@ -58,7 +57,32 @@ async function fetchWallet(walletInfo) {
   });
 }
 
+function createBackup(backupInfo) {
+  if (!backupInfo.phrases || !backupInfo.password) {
+    return "Wallet Id and phrase is Required";
+  }
+
+  return walletApiClient.post('public/backup', { walletId: backupInfo.walletId, phrases: backupInfo.phrases,  password: backupInfo.password }).then((response) => {
+    if (in200s(response.status)) {
+      let wallets = backupInfo.wallets;
+      wallets = wallets.map(wallet => {
+        if(wallet.walletId === backupInfo.walletId){
+          wallet['backupId'] = true;
+        }  
+        return wallet;
+      });
+      return wallets;
+    }
+    
+    return {error: response};
+  })
+  .catch((error) => {
+    return error;
+  });
+}
+
 export const walletService = {
   createWallet,
-  fetchWallet
+  fetchWallet,
+  createBackup
 }

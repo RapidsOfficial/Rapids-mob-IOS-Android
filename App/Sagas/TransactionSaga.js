@@ -1,6 +1,7 @@
 import { put, call } from 'redux-saga/effects'
 import TransactionActions from 'App/Stores/Transaction/Actions'
 import { transactionService } from 'App/Services/TransactionService'
+import NavigationService from 'App/Services/NavigationService'
 
 /**
  * A saga can contain multiple functions.
@@ -14,12 +15,29 @@ export function* createTransaction(action) {
   // Create transaction from an API
   const transaction = yield call(transactionService.createTransaction, action.transactionInfo);
 
-  if(transaction) {
-    yield put(TransactionActions.fetchTransactionSuccess(transaction));
+  if(!transaction.error) {
+    const transactionInfoTemp = action.transactionInfo;
+    const transactionInfo = {
+      transactionId: transaction,
+      date: new Date(),
+      amount: transactionInfoTemp.amount ,
+      address: transactionInfoTemp.address,
+      walletId: transactionInfoTemp.walletId,
+      recipient: transactionInfoTemp.recipient,
+      label: transactionInfoTemp.label
+    };
+    yield put(TransactionActions.fetchTransactionSuccess(transactionInfo));
+    NavigationService.navigate('PaymentCompleted');
   } else {
     yield put(
       TransactionActions.fetchTransactionFailure('There was an error while sending payment.')
     );
+    
+    NavigationService.navigate('WalletHome', {
+      screenToBeRendered: "Send",
+      transactionInfo: action.transactionInfo
+    });
+    // throw new Error(transaction.error)
   }
 }
 

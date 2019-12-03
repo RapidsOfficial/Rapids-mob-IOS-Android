@@ -16,7 +16,6 @@ export default StyleSheet.create({
     bottom: 0,
     padding: 15,
     width: '30%',
-    textAlign: 'center',
     marginVertical: 18
   },
   dashboardMenu: {    

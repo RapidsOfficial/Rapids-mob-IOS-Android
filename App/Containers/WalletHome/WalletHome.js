@@ -19,13 +19,18 @@ class WalletHome extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.props.fetchBalance();
+  }
+
   render() {
+    
     const { 
       walletId, wallets, selectWallet, 
       selectedWallet, walletIsLoading, balance, 
       fetchBalance, navigation, transaction,
       createTransaction, transactionIsLoading, transactionErrorMessage,
-      fetchTransactionFailure, fetchTransactionSuccess
+      fetchTransactionFailure, fetchTransactionSuccess, resetTransaction
     } = this.props;
 
     return (
@@ -43,6 +48,7 @@ class WalletHome extends React.Component {
               fetchBalance={fetchBalance}
               transaction={transaction}
               createTransaction={createTransaction}
+              resetTransaction={resetTransaction}
               fetchTransactionFailure={fetchTransactionFailure}
               fetchTransactionSuccess={fetchTransactionSuccess}
               transactionErrorMessage={transactionErrorMessage}
@@ -92,7 +98,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchBalance: (wallets) => dispatch(BalanceActions.fetchBalance(wallets)),
   createTransaction: (transactionInfo) => dispatch(TransactionAction.createTransaction(transactionInfo)),
   fetchTransactionFailure: (errorMessage) => dispatch(TransactionAction.fetchTransactionFailure(errorMessage)),
-  fetchTransactionSuccess: (transaction) => dispatch(TransactionAction.fetchTransactionSuccess(transaction))
+  fetchTransactionSuccess: (transaction) => dispatch(TransactionAction.fetchTransactionSuccess(transaction)),
+  resetTransaction: () => dispatch(TransactionAction.resetTransaction())
 });
 
 export default connect(

@@ -5,6 +5,8 @@ const { Types, Creators } = createActions({
   createWallet: ['walletInfo'],
   // Select Wallet
   selectWallet: ['selectedWallet'],
+  // Create Backup
+  createBackup: ['backupInfo'],
   //fetch wallet informations
   fetchWallet: ['walletInfo'],
   // The operation has started and is loading

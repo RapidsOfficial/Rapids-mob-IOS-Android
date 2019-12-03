@@ -1,7 +1,7 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
-target 'wallet' do
-  # Pods for wallet
+target 'rapidsnetwork' do
+  # Pods for rapidsnetwork
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -32,12 +32,14 @@ target 'wallet' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   # pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
-  
+  pod 'TouchID', :path => "../node_modules/react-native-touch-id"
+  pod 'RNKeychain', :path => '../node_modules/react-native-keychain'
+
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
   # pod 'react-native-async-storage', :path => '../node_modules/@react-native-community/async-storage'
 
-  target 'walletTests' do
+  target 'rapidsnetworkTests' do
     inherit! :search_paths
     # Pods for testing
   end
