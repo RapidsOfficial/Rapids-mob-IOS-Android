@@ -1,6 +1,7 @@
-## Content
+## Rapids Mobile Wallet
 
-The boilerplate contains:
+
+The mobile app is built on:
 
 - a [React Native](https://facebook.github.io/react-native/) (v**0.60.5**) application (in "[ejected](https://github.com/react-community/create-react-native-app/blob/master/EJECTING.md)" mode to allow using dependencies that rely on native code)
 - a [clear directory layout](#directory-layout) to provide a base architecture for your application
