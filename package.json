@@ -17,7 +17,7 @@
     "@haskkor/react-native-pincode": "^1.21.1",
     "@react-native-community/async-storage": "1.2.4",
     "@sentry/react-native": "^1.0.9",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bip39": "^3.0.2",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
